@@ -1,6 +1,6 @@
 package org.ahstu.mi.zk;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.common.MiLogger;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;

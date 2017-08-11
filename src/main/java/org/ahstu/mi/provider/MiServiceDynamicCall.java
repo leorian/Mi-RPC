@@ -1,6 +1,6 @@
 package org.ahstu.mi.provider;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.dynamic.MiDynamicCallService;
 import org.ahstu.mi.dynamic.MiDynamicCallServiceImpl;

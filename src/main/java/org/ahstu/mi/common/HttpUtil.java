@@ -1,6 +1,6 @@
 package org.ahstu.mi.common;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.SimpleHttpConnectionManager;
 import org.apache.commons.httpclient.methods.PostMethod;

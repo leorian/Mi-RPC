@@ -1,7 +1,7 @@
 package org.ahstu.mi.provider.manager;
 
 import com.alibaba.fastjson.JSON;
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.common.MiConstants;
 import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiLogger;

@@ -1,6 +1,6 @@
 package org.ahstu.mi.rpc.netty.server;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.rpc.RpcServer;
 import org.ahstu.mi.serialize.MiFstDecoder;
 import org.ahstu.mi.serialize.MiFstEncoder;

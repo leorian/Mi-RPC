@@ -1,6 +1,6 @@
 package org.ahstu.mi.consumer;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.consumer.manager.MiPullProvider;
 import org.ahstu.mi.consumer.manager.MiServiceStore;

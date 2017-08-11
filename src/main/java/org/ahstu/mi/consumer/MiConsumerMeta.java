@@ -1,6 +1,6 @@
 package org.ahstu.mi.consumer;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiException;
 import org.ahstu.mi.common.Meta;

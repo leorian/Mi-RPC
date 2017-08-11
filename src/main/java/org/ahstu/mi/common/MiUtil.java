@@ -1,7 +1,7 @@
 package org.ahstu.mi.common;
 
 import com.alibaba.fastjson.JSON;
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.rpc.netty.server.NettyServer;

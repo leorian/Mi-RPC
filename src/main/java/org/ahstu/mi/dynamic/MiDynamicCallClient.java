@@ -1,6 +1,6 @@
 package org.ahstu.mi.dynamic;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.consumer.manager.MiPullProvider;

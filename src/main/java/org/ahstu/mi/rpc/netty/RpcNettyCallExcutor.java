@@ -1,6 +1,6 @@
 package org.ahstu.mi.rpc.netty;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.consumer.manager.MiResultStore;
 import org.ahstu.mi.lock.MiLock;

@@ -1,6 +1,6 @@
 package org.ahstu.mi.rpc.netty.client;
 
-import com.bozhong.common.util.StringUtil;
+import org.ahstu.mi.common.StringUtil;
 import org.ahstu.mi.lock.MiLock;
 import org.ahstu.mi.lock.MiLockStore;
 import org.ahstu.mi.serialize.MiFstDecoder;
