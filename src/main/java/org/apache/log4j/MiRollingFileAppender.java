@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistRollingFileAppender extends DailyRollingFileAppender {
+public class MiRollingFileAppender extends DailyRollingFileAppender {
 
 
     private int maxFileSize = 3;

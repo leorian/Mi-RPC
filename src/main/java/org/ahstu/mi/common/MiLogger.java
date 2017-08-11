@@ -1,7 +1,7 @@
 package org.ahstu.mi.common;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import org.apache.log4j.InsistRollingFileAppender;
+import org.apache.log4j.MiRollingFileAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
@@ -96,7 +96,7 @@ public class MiLogger {
                     getSysLogger().warn(" InsistLogger start !");
 
                     try {
-                       InsistRollingFileAppender appender = (InsistRollingFileAppender) logger.getAppender(INSIST_LOG_NAME);
+                       MiRollingFileAppender appender = (MiRollingFileAppender) logger.getAppender(INSIST_LOG_NAME);
 
                         if (appender != null) {
                             getSysLogger().warn("appendName:" + appender.getName());
@@ -122,7 +122,7 @@ public class MiLogger {
 
         logger.setAdditivity(false);
         //additivity
-        InsistRollingFileAppender appender = new InsistRollingFileAppender();
+        MiRollingFileAppender appender = new MiRollingFileAppender();
 
         String logFilePath = getLogFilePath()+INSIST_LOG_FILE;
         //是否按照应用文件夹存放不同的日志文件：主要是解决多个应用放在同一个服务器上，日志在一个unifiedlog.log文件里面
