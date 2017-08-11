@@ -1,7 +1,7 @@
 package org.ahstu.mi.schema;
 
-import org.ahstu.mi.consumer.InsistSpringConsumerBean;
-import org.ahstu.mi.provider.InsistSpringProviderBean;
+import org.ahstu.mi.consumer.MiSpringConsumerBean;
+import org.ahstu.mi.provider.MiSpringProviderBean;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
@@ -20,18 +20,18 @@ import java.util.Map;
 /**
  * Created by sky on 2017/5/16.
  */
-public class InsistBeanDefinitionParser implements BeanDefinitionParser {
+public class MiBeanDefinitionParser implements BeanDefinitionParser {
 
     private final Class clazz;
 
-    public InsistBeanDefinitionParser(Class clazz) {
+    public MiBeanDefinitionParser(Class clazz) {
         this.clazz = clazz;
     }
 
     public BeanDefinition parse(Element element, ParserContext parserContext) {
-        if (clazz == InsistSpringProviderBean.class) {
+        if (clazz == MiSpringProviderBean.class) {
             return parseProvider(element, parserContext);
-        } else if (clazz == InsistSpringConsumerBean.class) {
+        } else if (clazz == MiSpringConsumerBean.class) {
             return parseConsumer(element, parserContext);
         } else {
             throw new BeanDefinitionValidationException("Unknown class to definition " + clazz.getName());

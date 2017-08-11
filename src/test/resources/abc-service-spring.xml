@@ -6,7 +6,7 @@
        		http://www.317hu.com/insist insist.xsd"
 	   default-autowire="byName">
 
-<!--<insist:consumer id="s1" interface="com.bozhong.insist.consumer.InsistSpringConsumerBean" version="1.0" group="external" />-->
+<!--<insist:consumer id="s1" interface="com.bozhong.insist.consumer.MiSpringConsumerBean" version="1.0" group="external" />-->
 
 	<bean id="providerExternalService" class="org.ahstu.mi.schema.ProviderExternalService"/>
 

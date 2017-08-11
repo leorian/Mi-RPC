@@ -15,7 +15,7 @@ import java.lang.reflect.Proxy;
 /**
  * Created by renyueliang on 17/5/18.
  */
-public class InsistSpringConsumerBean implements FactoryBean,ApplicationContextAware, InitializingBean{
+public class MiSpringConsumerBean implements FactoryBean,ApplicationContextAware, InitializingBean{
 
 
     private String id;

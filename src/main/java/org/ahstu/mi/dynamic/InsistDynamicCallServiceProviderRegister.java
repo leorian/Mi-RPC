@@ -1,6 +1,6 @@
 package org.ahstu.mi.dynamic;
 
-import org.ahstu.mi.provider.InsistSpringProviderBean;
+import org.ahstu.mi.provider.MiSpringProviderBean;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanFactoryPostProcessor;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -37,7 +37,7 @@ public class InsistDynamicCallServiceProviderRegister implements BeanFactoryPost
             beanFactory.registerBeanDefinition("insistDynamicCallService",
                     insistDynamicCallServiceBuilder.getBeanDefinition());
             BeanDefinitionBuilder InsistDynamicCallServiceProviderRegisterBuilder = BeanDefinitionBuilder.
-                    rootBeanDefinition(InsistSpringProviderBean.class.getName());
+                    rootBeanDefinition(MiSpringProviderBean.class.getName());
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("group", MiDynamicCallConstants.GROUP);
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("version", MiDynamicCallConstants.VERSION);
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("interfaceName", MiDynamicCallService.class.getName());

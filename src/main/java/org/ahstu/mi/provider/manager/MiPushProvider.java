@@ -52,12 +52,12 @@ public class MiPushProvider {
 
             zkClient.setDataForStr(versionServiceGroupPathAndIpPort,MiUtil.serviceMetaToJson(serviceMeta),-1);
 
-            MiLogger.record(StringUtil.format("InsistSpringProviderBean.push success ! path:%s json:%s",versionServiceGroupPathAndIpPort,JSON.toJSONString(serviceMeta)));
+            MiLogger.record(StringUtil.format("MiSpringProviderBean.push success ! path:%s json:%s",versionServiceGroupPathAndIpPort,JSON.toJSONString(serviceMeta)));
 
 
         }catch (Throwable e){
 
-            MiLogger.record(StringUtil.format("InsistSpringProviderBean.push error ! versionServiceGroupPath:%s %s errorCode:%s"
+            MiLogger.record(StringUtil.format("MiSpringProviderBean.push error ! versionServiceGroupPath:%s %s errorCode:%s"
                     ,versionServiceGroupPath,
                     MiError.SERVICE_META_REGISTER_EXCEPTION.getErrorCode(),
                     e.getMessage()

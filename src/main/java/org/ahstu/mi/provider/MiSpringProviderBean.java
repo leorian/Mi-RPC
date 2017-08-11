@@ -11,7 +11,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 /**
  * Created by renyueliang on 17/5/18.
  */
-public class InsistSpringProviderBean implements InitializingBean, ApplicationListener<ContextRefreshedEvent> {
+public class MiSpringProviderBean implements InitializingBean, ApplicationListener<ContextRefreshedEvent> {
     private String id;
     private String version;
     private String group;

@@ -2,7 +2,7 @@ package org.ahstu.mi.provider.factory;
 
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.provider.InsistProviderMeta;
-import org.ahstu.mi.provider.InsistSpringProviderBean;
+import org.ahstu.mi.provider.MiSpringProviderBean;
 import org.ahstu.mi.rpc.netty.server.NettyServer;
 
 /**
@@ -10,7 +10,7 @@ import org.ahstu.mi.rpc.netty.server.NettyServer;
  */
 public class ProviderFactory {
 
-    public static InsistProviderMeta springProviderToProviderMeta(InsistSpringProviderBean insistSpringProviderBean){
+    public static InsistProviderMeta springProviderToProviderMeta(MiSpringProviderBean insistSpringProviderBean){
 
         InsistProviderMeta insistProviderMeta = new InsistProviderMeta();
 
@@ -49,7 +49,7 @@ public class ProviderFactory {
         return serviceMeta;
     }
 
-    public static ServiceMeta springProviderToServiceMeta(InsistSpringProviderBean insistSpringProviderBean){
+    public static ServiceMeta springProviderToServiceMeta(MiSpringProviderBean insistSpringProviderBean){
         ServiceMeta serviceMeta =new ServiceMeta();
 
         serviceMeta.setPort(NettyServer.getInstance().getServerPort());

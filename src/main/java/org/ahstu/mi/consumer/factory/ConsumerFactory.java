@@ -2,7 +2,7 @@ package org.ahstu.mi.consumer.factory;
 
 import org.ahstu.mi.common.MiException;
 import org.ahstu.mi.consumer.MiConsumerMeta;
-import org.ahstu.mi.consumer.InsistSpringConsumerBean;
+import org.ahstu.mi.consumer.MiSpringConsumerBean;
 import org.ahstu.mi.rpc.netty.server.NettyServer;
 
 /**
@@ -10,7 +10,7 @@ import org.ahstu.mi.rpc.netty.server.NettyServer;
  */
 public class ConsumerFactory {
 
-    public static MiConsumerMeta springConsumerToConsumerMeta(InsistSpringConsumerBean bean){
+    public static MiConsumerMeta springConsumerToConsumerMeta(MiSpringConsumerBean bean){
 
         MiConsumerMeta insistConsumerMeta  = new MiConsumerMeta();
 
