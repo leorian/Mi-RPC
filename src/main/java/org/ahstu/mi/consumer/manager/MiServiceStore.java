@@ -3,7 +3,7 @@ package org.ahstu.mi.consumer.manager;
 import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiException;
 import org.ahstu.mi.common.MiUtil;
-import org.ahstu.mi.consumer.InsistConsumerMeta;
+import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.module.ServiceMeta;
 
 import java.util.*;
@@ -81,7 +81,7 @@ public class MiServiceStore {
     }
 
 
-    public static ServiceMeta getServiceMeta(InsistConsumerMeta meta) {
+    public static ServiceMeta getServiceMeta(MiConsumerMeta meta) {
         String serviceNameGroupVersion = MiUtil.serviceGroupVersionCreateKey(meta.getInterfaceName(),
                 meta.getGroup(), meta.getVersion());
         return getServiceMeta(serviceNameGroupVersion);

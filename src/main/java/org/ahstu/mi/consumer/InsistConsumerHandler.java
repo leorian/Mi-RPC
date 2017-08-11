@@ -15,10 +15,10 @@ import java.lang.reflect.Method;
  */
 public class InsistConsumerHandler  implements InvocationHandler {
 
-    private InsistConsumerMeta meta;
+    private MiConsumerMeta meta;
     private ServiceMeta serviceMeta;
 
-    public InsistConsumerHandler(InsistConsumerMeta meta ){
+    public InsistConsumerHandler(MiConsumerMeta meta ){
         this.meta=meta;
     }
 

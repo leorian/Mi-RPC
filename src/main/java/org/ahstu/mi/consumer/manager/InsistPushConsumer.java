@@ -6,7 +6,7 @@ import org.ahstu.mi.common.MiConstants;
 import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiUtil;
-import org.ahstu.mi.consumer.InsistConsumerMeta;
+import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.consumer.InsistConsumerStore;
 import org.ahstu.mi.zk.InsistZkClient;
 import org.ahstu.mi.zk.api.IZkClient;
@@ -16,7 +16,7 @@ import org.ahstu.mi.zk.api.IZkClient;
  */
 public class InsistPushConsumer {
 
-    public static void push(InsistConsumerMeta clientMeta){
+    public static void push(MiConsumerMeta clientMeta){
 
 
         MiLogger.record(StringUtil.format("InsistPushConsumer.push start ! json:"+ JSON.toJSONString(clientMeta)));
@@ -66,7 +66,7 @@ public class InsistPushConsumer {
     }
 
     public static void pushAll() {
-        for (InsistConsumerMeta meta : InsistConsumerStore.getAll()) {
+        for (MiConsumerMeta meta : InsistConsumerStore.getAll()) {
             push(meta);
         }
     }

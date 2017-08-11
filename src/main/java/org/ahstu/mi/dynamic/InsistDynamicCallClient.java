@@ -2,7 +2,7 @@ package org.ahstu.mi.dynamic;
 
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
-import org.ahstu.mi.consumer.InsistConsumerMeta;
+import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.consumer.manager.InsistPullProvider;
 import org.ahstu.mi.consumer.manager.MiServiceStore;
 import org.ahstu.mi.module.ServiceMeta;
@@ -14,11 +14,11 @@ import java.lang.reflect.Method;
  * Created by xiezg@317hu.com on 2017/6/8 0008.
  */
 public class InsistDynamicCallClient {
-    private final InsistConsumerMeta meta;
+    private final MiConsumerMeta meta;
     private final MiDynamicDTO insistDynamicDTO;
 
     public InsistDynamicCallClient(String serviceName, String group, String version, String methodName, String param) {
-        this.meta = new InsistConsumerMeta();
+        this.meta = new MiConsumerMeta();
         this.meta.setInterfaceName(serviceName);
         this.meta.setGroup(group);
         this.meta.setVersion(version);

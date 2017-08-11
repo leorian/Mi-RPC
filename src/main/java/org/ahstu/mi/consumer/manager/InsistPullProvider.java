@@ -4,7 +4,7 @@ import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.MiConstants;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiUtil;
-import org.ahstu.mi.consumer.InsistConsumerMeta;
+import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.consumer.InsistConsumerStore;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.zk.InsistZkClient;
@@ -56,7 +56,7 @@ public class InsistPullProvider  {
         syncPathStore.remove(path);
     }
 
-    public static void pull(InsistConsumerMeta meta){
+    public static void pull(MiConsumerMeta meta){
        String path = MiUtil.getServiceNameGroupVersionZkPath(meta.getInterfaceName(),meta.getGroup(),meta.getVersion());
         pull(path);
     }
@@ -133,7 +133,7 @@ public class InsistPullProvider  {
 
     public static void  pullAll(){
 
-        for(InsistConsumerMeta meta : InsistConsumerStore.getAll() ){
+        for(MiConsumerMeta meta : InsistConsumerStore.getAll() ){
             pull(meta);
         }
 

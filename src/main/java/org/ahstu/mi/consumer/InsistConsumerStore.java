@@ -10,15 +10,15 @@ import java.util.*;
  */
 public class InsistConsumerStore {
 
-    private  static  Map<String,InsistConsumerMeta> consumerStore = new Hashtable<String, InsistConsumerMeta>();
+    private  static  Map<String,MiConsumerMeta> consumerStore = new Hashtable<String, MiConsumerMeta>();
 
-    public static void add(InsistConsumerMeta meta){
+    public static void add(MiConsumerMeta meta){
         add(MiUtil.serviceGroupVersionCreateKey(meta.getInterfaceName(),
                 meta.getGroup(),
                 meta.getVersion()),meta);
     }
 
-    public static void  add(String key,InsistConsumerMeta meta){
+    public static void  add(String key,MiConsumerMeta meta){
         if(StringUtil.isBlank(key) || meta==null){
             return;
         }
@@ -26,7 +26,7 @@ public class InsistConsumerStore {
 
     }
 
-    public static Collection<InsistConsumerMeta> getAll(){
+    public static Collection<MiConsumerMeta> getAll(){
         return consumerStore.values();
     }
 

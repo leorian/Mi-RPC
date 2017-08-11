@@ -2,7 +2,7 @@ package org.ahstu.mi.common;
 
 import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.StringUtil;
-import org.ahstu.mi.consumer.InsistConsumerMeta;
+import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.rpc.netty.server.NettyServer;
 import org.ahstu.mi.zk.InsistZkClient;
@@ -194,11 +194,11 @@ public class MiUtil {
         return JSON.toJSONString(serviceMeta);
     }
 
-    public static InsistConsumerMeta jsonToClientMeta(String json) {
-        return JSON.parseObject(json, InsistConsumerMeta.class);
+    public static MiConsumerMeta jsonToClientMeta(String json) {
+        return JSON.parseObject(json, MiConsumerMeta.class);
     }
 
-    public static String clientMetaToJson(InsistConsumerMeta clientMeta) {
+    public static String clientMetaToJson(MiConsumerMeta clientMeta) {
         return JSON.toJSONString(clientMeta);
     }
 

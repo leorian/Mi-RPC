@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistConsumerMeta extends Meta implements Serializable{
+public class MiConsumerMeta extends Meta implements Serializable{
 
     private static final long serialVersionUID = 7310793253864310838L;
     private String id;

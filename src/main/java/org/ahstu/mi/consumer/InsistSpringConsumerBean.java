@@ -26,7 +26,7 @@ public class InsistSpringConsumerBean implements FactoryBean,ApplicationContextA
     private String interfaceName;
     private Class serviceClass;
     private Object proxy;
-    private InsistConsumerMeta meta;
+    private MiConsumerMeta meta;
 
     public String getId() {
         return id;
