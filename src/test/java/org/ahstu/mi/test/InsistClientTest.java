@@ -1,7 +1,7 @@
 package org.ahstu.mi.test;
 
 import org.ahstu.mi.common.MiDynamicDTO;
-import org.ahstu.mi.dynamic.InsistDynamicCallService;
+import org.ahstu.mi.dynamic.MiDynamicCallService;
 import org.ahstu.mi.test.client.DataCenterService;
 import org.ahstu.mi.test.service.TradeService;
 import org.springframework.context.ApplicationContext;
@@ -27,7 +27,7 @@ public class InsistClientTest {
     public static void main(String[] args) throws Throwable {
         init();
 
-        InsistDynamicCallService insistDynamicCallService = getBean("insistDynamicCallServiceClient");
+        MiDynamicCallService insistDynamicCallService = getBean("insistDynamicCallServiceClient");
         MiDynamicDTO insistDynamicDTO = new MiDynamicDTO();
         insistDynamicDTO.setGroup("trade");
         // insistDynamicDTO.setMethod("findTrade");

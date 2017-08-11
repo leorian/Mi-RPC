@@ -2,8 +2,8 @@ package org.ahstu.mi.provider;
 
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
-import org.ahstu.mi.dynamic.InsistDynamicCallService;
-import org.ahstu.mi.dynamic.InsistDynamicCallServiceImpl;
+import org.ahstu.mi.dynamic.MiDynamicCallService;
+import org.ahstu.mi.dynamic.MiDynamicCallServiceImpl;
 import org.apache.commons.beanutils.MethodUtils;
 
 import java.lang.reflect.InvocationTargetException;
@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
  * Created by renyueliang on 17/5/18.
  */
 public class InsistServiceDynamicCall {
-    private static final InsistDynamicCallService IPM = new InsistDynamicCallServiceImpl();
+    private static final MiDynamicCallService IPM = new MiDynamicCallServiceImpl();
 
     public static MiResult call(MiSendDTO sendDTO) {
         ThreadServerLocalUtil.set(MiConstants.REMOTE_CLIENT_IP, sendDTO.getClientIp());
@@ -20,7 +20,7 @@ public class InsistServiceDynamicCall {
         MiResult insistResult = new MiResult();
         InsistProviderMeta providerMeta =
                 InsistProviderStore.get(MiUtil.serviceGroupVersionCreateKey(sendDTO.getInterfaceName(), sendDTO.getGroup(), sendDTO.getVersion()));
-        if (sendDTO.getInterfaceName().equals(InsistDynamicCallService.class.getName())) {
+        if (sendDTO.getInterfaceName().equals(MiDynamicCallService.class.getName())) {
             providerMeta = new InsistProviderMeta();
             providerMeta.setRef(IPM);
         }

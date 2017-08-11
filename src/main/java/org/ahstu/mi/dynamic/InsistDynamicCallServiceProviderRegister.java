@@ -33,14 +33,14 @@ public class InsistDynamicCallServiceProviderRegister implements BeanFactoryPost
                 return;
             }
             BeanDefinitionBuilder insistDynamicCallServiceBuilder = BeanDefinitionBuilder.
-                    rootBeanDefinition(InsistDynamicCallServiceImpl.class.getName());
+                    rootBeanDefinition(MiDynamicCallServiceImpl.class.getName());
             beanFactory.registerBeanDefinition("insistDynamicCallService",
                     insistDynamicCallServiceBuilder.getBeanDefinition());
             BeanDefinitionBuilder InsistDynamicCallServiceProviderRegisterBuilder = BeanDefinitionBuilder.
                     rootBeanDefinition(InsistSpringProviderBean.class.getName());
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("group", InsistDynamicCallConstants.GROUP);
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("version", InsistDynamicCallConstants.VERSION);
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("interfaceName", InsistDynamicCallService.class.getName());
+            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("group", MiDynamicCallConstants.GROUP);
+            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("version", MiDynamicCallConstants.VERSION);
+            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("interfaceName", MiDynamicCallService.class.getName());
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("id", "insistDynamicCallServiceProviderRegister");
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyReference("target", "insistDynamicCallService");
             beanFactory.registerBeanDefinition("insistDynamicCallServiceProviderRegister",

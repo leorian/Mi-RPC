@@ -3,7 +3,7 @@ package org.ahstu.mi.dynamic;
 /**
  * Created by xiezg@317hu.com on 2017/6/8 0008.
  */
-public class InsistDynamicCallConstants {
+public class MiDynamicCallConstants {
     /**
      * 动态调用组
      */

@@ -13,11 +13,11 @@ import java.lang.reflect.Method;
 /**
  * Created by xiezg@317hu.com on 2017/6/8 0008.
  */
-public class InsistDynamicCallClient {
+public class MiDynamicCallClient {
     private final MiConsumerMeta meta;
     private final MiDynamicDTO insistDynamicDTO;
 
-    public InsistDynamicCallClient(String serviceName, String group, String version, String methodName, String param) {
+    public MiDynamicCallClient(String serviceName, String group, String version, String methodName, String param) {
         this.meta = new MiConsumerMeta();
         this.meta.setInterfaceName(serviceName);
         this.meta.setGroup(group);
@@ -55,7 +55,7 @@ public class InsistDynamicCallClient {
                 }
 
                 sendDTO = createInsistSendDTO(requestId,
-                        InsistDynamicCallService.class.getMethod(methodName, MiDynamicDTO.class),
+                        MiDynamicCallService.class.getMethod(methodName, MiDynamicDTO.class),
                         new Object[]{this.insistDynamicDTO}, serviceMeta.getIp(), serviceMeta.getPort());
                 result = RemoteExcutorFactory.getRpcExcutor().remoteCall(sendDTO);
                 callSuccess = true;
@@ -116,16 +116,16 @@ public class InsistDynamicCallClient {
     private MiSendDTO createInsistSendDTO(String requestId, Method method, Object[] args, String ip, int port) {
         return new MiSendDTO(
                 requestId,
-                InsistDynamicCallService.class.getName(),
+                MiDynamicCallService.class.getName(),
                 method.getName(),
                 args,
                 method.getParameterTypes(),
                 ip,
                 port,
-                InsistDynamicCallConstants.GROUP,
+                MiDynamicCallConstants.GROUP,
                 3000,
                 MiUtil.geLocalIp(),
-                InsistDynamicCallConstants.VERSION
+                MiDynamicCallConstants.VERSION
         );
     }
 

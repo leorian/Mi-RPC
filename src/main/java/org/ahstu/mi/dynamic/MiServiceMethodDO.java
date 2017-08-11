@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by xiezg@317hu.com on 2017/6/13 0013.
  */
-public class InsistServiceMethodDO implements Serializable {
+public class MiServiceMethodDO implements Serializable {
 
     /**
      * 方法简短名称
@@ -26,7 +26,7 @@ public class InsistServiceMethodDO implements Serializable {
     /**
      * 参数类型
      */
-    private List<InsistServiceMethodParameterDO> insistServiceMethodParameterDOList;
+    private List<MiServiceMethodParameterDO> insistServiceMethodParameterDOList;
 
     public String getSimpleMethodName() {
         return simpleMethodName;
@@ -52,11 +52,11 @@ public class InsistServiceMethodDO implements Serializable {
         this.returnType = returnType;
     }
 
-    public List<InsistServiceMethodParameterDO> getInsistServiceMethodParameterDOList() {
+    public List<MiServiceMethodParameterDO> getInsistServiceMethodParameterDOList() {
         return insistServiceMethodParameterDOList;
     }
 
-    public void setInsistServiceMethodParameterDOList(List<InsistServiceMethodParameterDO> insistServiceMethodParameterDOList) {
+    public void setInsistServiceMethodParameterDOList(List<MiServiceMethodParameterDO> insistServiceMethodParameterDOList) {
         this.insistServiceMethodParameterDOList = insistServiceMethodParameterDOList;
     }
 }

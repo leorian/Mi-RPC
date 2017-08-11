@@ -5,7 +5,7 @@ import org.ahstu.mi.common.MiDynamicDTO;
 /**
  * Created by xiezhonggui on 2017/6/7.
  */
-public interface InsistDynamicCallService {
+public interface MiDynamicCallService {
 
     /**
      * HTTP 转 RPC

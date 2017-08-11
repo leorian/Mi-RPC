@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by xiezg@317hu.com on 2017/6/13 0013.
  */
-public class InsistServiceMethodParameterDO implements Serializable {
+public class MiServiceMethodParameterDO implements Serializable {
     private int parameterIndex;//参数索引
     private String parameterTypeName;//参数类型名称
     private String parameterExample;//参数类型示例
