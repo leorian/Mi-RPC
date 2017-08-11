@@ -7,7 +7,7 @@ import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.MiConsumerMeta;
-import org.ahstu.mi.consumer.InsistConsumerStore;
+import org.ahstu.mi.consumer.MiConsumerStore;
 import org.ahstu.mi.zk.InsistZkClient;
 import org.ahstu.mi.zk.api.IZkClient;
 
@@ -66,7 +66,7 @@ public class InsistPushConsumer {
     }
 
     public static void pushAll() {
-        for (MiConsumerMeta meta : InsistConsumerStore.getAll()) {
+        for (MiConsumerMeta meta : MiConsumerStore.getAll()) {
             push(meta);
         }
     }

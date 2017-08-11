@@ -11,17 +11,17 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Created by renyueliang on 17/5/18.
  */
-public class InsistServiceDynamicCall {
+public class MiServiceDynamicCall {
     private static final MiDynamicCallService IPM = new MiDynamicCallServiceImpl();
 
     public static MiResult call(MiSendDTO sendDTO) {
         ThreadServerLocalUtil.set(MiConstants.REMOTE_CLIENT_IP, sendDTO.getClientIp());
         ThreadServerLocalUtil.set(MiConstants.REQUEST_ID, sendDTO.getRequestId());
         MiResult insistResult = new MiResult();
-        InsistProviderMeta providerMeta =
-                InsistProviderStore.get(MiUtil.serviceGroupVersionCreateKey(sendDTO.getInterfaceName(), sendDTO.getGroup(), sendDTO.getVersion()));
+        MiProviderMeta providerMeta =
+                MiProviderStore.get(MiUtil.serviceGroupVersionCreateKey(sendDTO.getInterfaceName(), sendDTO.getGroup(), sendDTO.getVersion()));
         if (sendDTO.getInterfaceName().equals(MiDynamicCallService.class.getName())) {
-            providerMeta = new InsistProviderMeta();
+            providerMeta = new MiProviderMeta();
             providerMeta.setRef(IPM);
         }
 
@@ -64,7 +64,7 @@ public class InsistServiceDynamicCall {
     private static void recordLog(MiSendDTO sendDTO, Throwable e, String errorCode) {
         if (e == null) {
             MiLogger.record(
-                    StringUtil.format("InsistServiceDynamicCall.call error ! serviceName:%s,group:%s,version:%s,method:%s,clientIp:%s,requestId:%s errorCode:NOT_FIND_SERVICE_PROVIDER" + errorCode,
+                    StringUtil.format("MiServiceDynamicCall.call error ! serviceName:%s,group:%s,version:%s,method:%s,clientIp:%s,requestId:%s errorCode:NOT_FIND_SERVICE_PROVIDER" + errorCode,
                             sendDTO.getInterfaceName(),
                             sendDTO.getGroup(),
                             sendDTO.getVersion(),
@@ -74,7 +74,7 @@ public class InsistServiceDynamicCall {
             );
         } else {
             MiLogger.record(
-                    StringUtil.format("InsistServiceDynamicCall.call error ! serviceName:%s,group:%s,version:%s,method:%s,clientIp:%s,requestId:%s errorCode:NOT_FIND_SERVICE_PROVIDER" + errorCode,
+                    StringUtil.format("MiServiceDynamicCall.call error ! serviceName:%s,group:%s,version:%s,method:%s,clientIp:%s,requestId:%s errorCode:NOT_FIND_SERVICE_PROVIDER" + errorCode,
                             sendDTO.getInterfaceName(),
                             sendDTO.getGroup(),
                             sendDTO.getVersion(),

@@ -7,8 +7,8 @@ import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.module.ServiceMeta;
-import org.ahstu.mi.provider.InsistProviderMeta;
-import org.ahstu.mi.provider.InsistProviderStore;
+import org.ahstu.mi.provider.MiProviderMeta;
+import org.ahstu.mi.provider.MiProviderStore;
 import org.ahstu.mi.provider.factory.ProviderFactory;
 import org.ahstu.mi.zk.InsistZkClient;
 import org.ahstu.mi.zk.api.IZkClient;
@@ -69,7 +69,7 @@ public class MiPushProvider {
 
     public static void pushAll(){
 
-        for(InsistProviderMeta providerMeta : InsistProviderStore.getAll()){
+        for(MiProviderMeta providerMeta : MiProviderStore.getAll()){
             push(ProviderFactory.insistProviderMetaToServiceMeta(providerMeta));
         }
 

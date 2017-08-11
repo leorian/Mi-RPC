@@ -12,7 +12,7 @@
 
         <!--<bean id="insistDynamicCallService" class="com.bozhong.insist.dynamic.InsistDynamicCallServiceImpl"/>-->
 
-        <!--<bean class="com.bozhong.insist.dynamic.InsistDynamicCallServiceProviderRegister"/>-->
+        <!--<bean class="com.bozhong.insist.dynamic.MiDynamicCallServiceProviderRegister"/>-->
 
         <insist:provider id="userServiceInsist"
                          interface="org.ahstu.mi.test.service.UserService"

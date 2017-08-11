@@ -9,7 +9,7 @@ import org.springframework.beans.factory.support.DefaultListableBeanFactory;
 
 import java.util.concurrent.locks.ReentrantLock;
 
-public class InsistDynamicCallServiceProviderRegister implements BeanFactoryPostProcessor {
+public class MiDynamicCallServiceProviderRegister implements BeanFactoryPostProcessor {
 
     private static final ReentrantLock reentrantLock = new ReentrantLock();
     private static volatile boolean INSIST_START_SUCCESS = false;

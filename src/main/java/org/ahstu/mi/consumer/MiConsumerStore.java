@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistConsumerStore {
+public class MiConsumerStore {
 
     private  static  Map<String,MiConsumerMeta> consumerStore = new Hashtable<String, MiConsumerMeta>();
 

@@ -5,7 +5,7 @@ import org.ahstu.mi.common.Meta;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistProviderMeta extends Meta {
+public class MiProviderMeta extends Meta {
 
     private String id;
     private String version;

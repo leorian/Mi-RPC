@@ -83,7 +83,7 @@ public class MiSpringConsumerBean implements FactoryBean,ApplicationContextAware
     public void init(){
 
         this.meta = ConsumerFactory.springConsumerToConsumerMeta(this);
-        InsistConsumerStore.add(this.meta);
+        MiConsumerStore.add(this.meta);
         this.serviceClass = this.meta.getInterfaceClass();
 
         this.proxy = Proxy.newProxyInstance(this.serviceClass.getClassLoader(), new Class[]{this.serviceClass},

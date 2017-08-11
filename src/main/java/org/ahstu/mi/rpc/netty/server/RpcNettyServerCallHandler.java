@@ -4,7 +4,7 @@ package org.ahstu.mi.rpc.netty.server;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiResult;
 import org.ahstu.mi.common.MiSendDTO;
-import org.ahstu.mi.provider.InsistServiceDynamicCall;
+import org.ahstu.mi.provider.MiServiceDynamicCall;
 import org.ahstu.mi.rpc.netty.InsistChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
@@ -27,7 +27,7 @@ public class RpcNettyServerCallHandler extends InsistChannelHandlerAdapter {
 
                 MiLogger.record("server receive message requestId:" + sendDTO.getRequestId());
                 long start = System.currentTimeMillis();
-                MiResult insistResult = InsistServiceDynamicCall.call(sendDTO);
+                MiResult insistResult = MiServiceDynamicCall.call(sendDTO);
                 insistResult.setRequestId(sendDTO.getRequestId());
                 long end = System.currentTimeMillis();
                 MiLogger.record("server method call requestId:" + sendDTO.getRequestId()

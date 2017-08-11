@@ -5,8 +5,8 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.ahstu.mi.common.MiDynamicDTO;
 import org.ahstu.mi.common.MiUtil;
-import org.ahstu.mi.provider.InsistProviderMeta;
-import org.ahstu.mi.provider.InsistProviderStore;
+import org.ahstu.mi.provider.MiProviderMeta;
+import org.ahstu.mi.provider.MiProviderStore;
 import org.apache.commons.beanutils.MethodUtils;
 import org.springframework.util.StringUtils;
 
@@ -79,8 +79,8 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
         String methodName = insistDynamicDTO.getMethod();//方法名称
         String param = insistDynamicDTO.getParam();//参数
         JSONArray jsonArray = JSON.parseArray(param);
-        InsistProviderMeta providerMeta =
-                InsistProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
+        MiProviderMeta providerMeta =
+                MiProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
         Object provider = providerMeta.getRef();
         Class providerClass = provider.getClass();
         Method[] methods = providerClass.getDeclaredMethods();
@@ -372,8 +372,8 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
         String serviceName = insistDynamicDTO.getServiceName();//服务名称
         String group = insistDynamicDTO.getGroup();//组名
         String version = insistDynamicDTO.getVersion();//版本名称
-        InsistProviderMeta providerMeta =
-                InsistProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
+        MiProviderMeta providerMeta =
+                MiProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
         Object provider = providerMeta.getRef();
         Class providerClass = provider.getClass();
         try {

@@ -5,7 +5,7 @@ import org.ahstu.mi.common.MiConstants;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.MiConsumerMeta;
-import org.ahstu.mi.consumer.InsistConsumerStore;
+import org.ahstu.mi.consumer.MiConsumerStore;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.zk.InsistZkClient;
 import org.ahstu.mi.zk.ZkChildrenWatcher;
@@ -133,7 +133,7 @@ public class InsistPullProvider  {
 
     public static void  pullAll(){
 
-        for(MiConsumerMeta meta : InsistConsumerStore.getAll() ){
+        for(MiConsumerMeta meta : MiConsumerStore.getAll() ){
             pull(meta);
         }
 
