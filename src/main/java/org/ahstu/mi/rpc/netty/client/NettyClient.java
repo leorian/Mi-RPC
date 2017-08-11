@@ -89,7 +89,7 @@ public class NettyClient {
 
 
     public ChannelHandlerContext getChc(final MiSendDTO sendDTO) {
-        final String chcKey = InsistUtil.ipAndPortCreateKey(sendDTO.getServerIp(), sendDTO.getPort());
+        final String chcKey = MiUtil.ipAndPortCreateKey(sendDTO.getServerIp(), sendDTO.getPort());
         ChannelHandlerContext chc = NettyChannelHandlerStore.get(chcKey);
         if (chc == null) {
             synchronized (NETTYCLIENT_LOCK) {

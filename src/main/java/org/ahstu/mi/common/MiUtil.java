@@ -18,7 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by renyueliang on 17/5/16.
  */
-public class InsistUtil {
+public class MiUtil {
 
     private static String ip = null;
     private static final ReentrantLock reentrantLock = new ReentrantLock();
@@ -238,7 +238,7 @@ public class InsistUtil {
 
     public static void createAllProviderPathNode(String serviceName, String group, String version) {
         IZkClient zkClient = InsistZkClient.getInstance();
-        String groupPath = InsistUtil.getProviderZkPath() + MiConstants.INSIST_ZK_SLASH + group;
+        String groupPath = MiUtil.getProviderZkPath() + MiConstants.INSIST_ZK_SLASH + group;
         String serviceGroupPath = groupPath + MiConstants.INSIST_ZK_SLASH + serviceName;
         String versionServiceGroupPath = serviceGroupPath + MiConstants.INSIST_ZK_SLASH + version;
         try {

@@ -1,6 +1,6 @@
 package org.ahstu.mi.consumer;
 
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.factory.ConsumerFactory;
 import org.ahstu.mi.consumer.manager.InsistPullProvider;
 import org.ahstu.mi.consumer.manager.InsistPushConsumer;
@@ -99,7 +99,7 @@ public class InsistSpringConsumerBean implements FactoryBean,ApplicationContextA
     }
 
     public void afterPropertiesSet() throws Exception {
-        InsistUtil.insistStartUp();
+        MiUtil.insistStartUp();
         init();
         InsistPullProvider.pull(this.meta);
         InsistPushConsumer.push(this.meta);

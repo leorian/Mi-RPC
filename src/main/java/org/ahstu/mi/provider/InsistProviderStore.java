@@ -1,6 +1,6 @@
 package org.ahstu.mi.provider;
 
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 
 import java.util.Collection;
 import java.util.Hashtable;
@@ -17,7 +17,7 @@ public class InsistProviderStore  {
 
 
     public static void add(InsistProviderMeta insistProviderMeta){
-        String serviceNameGroupVersion= InsistUtil.serviceGroupVersionCreateKey(
+        String serviceNameGroupVersion= MiUtil.serviceGroupVersionCreateKey(
                 insistProviderMeta.getInterfaceName(),
                 insistProviderMeta.getGroup(),
                 insistProviderMeta.getVersion());

@@ -3,8 +3,8 @@ package org.ahstu.mi.consumer.manager;
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiException;
-import org.ahstu.mi.common.InsistUtil;
 import org.ahstu.mi.common.MiLogger;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.lock.InsistLock;
 import org.ahstu.mi.module.ServiceMeta;
 
@@ -44,7 +44,7 @@ public class InsistServiceList {
         }
 
         for (ServiceMeta serviceMeta : providers) {
-            providersMap.put(InsistUtil.ipAndPortCreateKey(serviceMeta), serviceMeta);
+            providersMap.put(MiUtil.ipAndPortCreateKey(serviceMeta), serviceMeta);
             MiServiceStore.addByIpAndPort(serviceMeta);
         }
     }
@@ -75,10 +75,10 @@ public class InsistServiceList {
 
     public synchronized void addService(ServiceMeta serviceMeta) {
 
-        ServiceMeta p =  providersMap.get(InsistUtil.ipAndPortCreateKey(serviceMeta));
+        ServiceMeta p =  providersMap.get(MiUtil.ipAndPortCreateKey(serviceMeta));
 
         if(p==null){
-            providersMap.put(InsistUtil.ipAndPortCreateKey(serviceMeta),p);
+            providersMap.put(MiUtil.ipAndPortCreateKey(serviceMeta),p);
             providers.add(p);
         }
 

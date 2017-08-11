@@ -1,7 +1,7 @@
 package org.ahstu.mi.consumer;
 
 import com.bozhong.common.util.StringUtil;
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 
 import java.util.*;
 
@@ -13,7 +13,7 @@ public class InsistConsumerStore {
     private  static  Map<String,InsistConsumerMeta> consumerStore = new Hashtable<String, InsistConsumerMeta>();
 
     public static void add(InsistConsumerMeta meta){
-        add(InsistUtil.serviceGroupVersionCreateKey(meta.getInterfaceName(),
+        add(MiUtil.serviceGroupVersionCreateKey(meta.getInterfaceName(),
                 meta.getGroup(),
                 meta.getVersion()),meta);
     }

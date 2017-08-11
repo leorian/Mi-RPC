@@ -19,7 +19,7 @@ public class InsistServiceDynamicCall {
         ThreadServerLocalUtil.set(MiConstants.REQUEST_ID, sendDTO.getRequestId());
         MiResult insistResult = new MiResult();
         InsistProviderMeta providerMeta =
-                InsistProviderStore.get(InsistUtil.serviceGroupVersionCreateKey(sendDTO.getInterfaceName(), sendDTO.getGroup(), sendDTO.getVersion()));
+                InsistProviderStore.get(MiUtil.serviceGroupVersionCreateKey(sendDTO.getInterfaceName(), sendDTO.getGroup(), sendDTO.getVersion()));
         if (sendDTO.getInterfaceName().equals(InsistDynamicCallService.class.getName())) {
             providerMeta = new InsistProviderMeta();
             providerMeta.setRef(IPM);

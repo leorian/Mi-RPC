@@ -41,7 +41,7 @@ public class InsistDynamicCallClient {
 
     private MiResult rmiCall(String methodName) {
         MiSendDTO sendDTO;
-        String requestId = InsistUtil.getRequestId();
+        String requestId = MiUtil.getRequestId();
         MiResult result = null;
         int index = 1;
         boolean callSuccess = false;
@@ -79,14 +79,14 @@ public class InsistDynamicCallClient {
                 } else if (MiError.CLOSED_SELECTOR_EXCEPTION.getErrorCode().equals(ie.getErrorCode())) {
                     //删除服务的本地地址 找到服务删除这个IP
                     MiServiceStore.delAllServiceByServiceMeta(serviceMeta);
-                    NettyChannelHandlerStore.remove(InsistUtil.ipAndPortCreateKey(serviceMeta));
+                    NettyChannelHandlerStore.remove(MiUtil.ipAndPortCreateKey(serviceMeta));
                     if (index > 3) {
                         throw new MiException(MiError.CLOSED_SELECTOR_EXCEPTION, ie);
                     }
 
                 } else if (MiError.CONNECTION_INTERRUPT.getErrorCode().equals(ie.getErrorCode())) {
                     //删除服务的本地地址 找到服务删除这个IP
-                    NettyChannelHandlerStore.remove(InsistUtil.ipAndPortCreateKey(serviceMeta));
+                    NettyChannelHandlerStore.remove(MiUtil.ipAndPortCreateKey(serviceMeta));
                     if (index > 3) {
                         throw new MiException(MiError.CONNECTION_INTERRUPT, ie);
                     }
@@ -124,7 +124,7 @@ public class InsistDynamicCallClient {
                 port,
                 InsistDynamicCallConstants.GROUP,
                 3000,
-                InsistUtil.geLocalIp(),
+                MiUtil.geLocalIp(),
                 InsistDynamicCallConstants.VERSION
         );
     }

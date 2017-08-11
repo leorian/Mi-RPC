@@ -4,7 +4,7 @@ import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.MiException;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiResult;
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.manager.MiResultStore;
 import org.ahstu.mi.lock.InsistLock;
 import org.ahstu.mi.lock.InsistLockStore;
@@ -27,7 +27,7 @@ public class RpcNettyClientCallHandler extends InsistChannelHandlerAdapter {
         String remoteIp = inetSocketAddress.getAddress().getHostAddress();
         int port = inetSocketAddress.getPort() ;
 
-        String ipAndPortKey = InsistUtil.ipAndPortCreateKey(remoteIp.equals("localhost") ? "127.0.0.1" : remoteIp,port);
+        String ipAndPortKey = MiUtil.ipAndPortCreateKey(remoteIp.equals("localhost") ? "127.0.0.1" : remoteIp,port);
 
         NettyChannelHandlerStore.add(ipAndPortKey, ctx);
         InsistLock insistLock = InsistLockStore.get(ipAndPortKey);
@@ -62,7 +62,7 @@ public class RpcNettyClientCallHandler extends InsistChannelHandlerAdapter {
 
         String remoteIp = inetSocketAddress.getAddress().getHostAddress();
         int port = inetSocketAddress.getPort() ;
-        String ipAndPortKey = InsistUtil.ipAndPortCreateKey(remoteIp.equals("localhost") ? "127.0.0.1" : remoteIp,port);
+        String ipAndPortKey = MiUtil.ipAndPortCreateKey(remoteIp.equals("localhost") ? "127.0.0.1" : remoteIp,port);
 
         NettyChannelHandlerStore.remove(ipAndPortKey);
 

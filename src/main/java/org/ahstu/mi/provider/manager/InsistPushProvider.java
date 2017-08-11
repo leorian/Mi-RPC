@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.MiConstants;
 import org.ahstu.mi.common.MiError;
-import org.ahstu.mi.common.InsistUtil;
 import org.ahstu.mi.common.MiLogger;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.provider.InsistProviderMeta;
 import org.ahstu.mi.provider.InsistProviderStore;
@@ -27,7 +27,7 @@ public class InsistPushProvider {
         //--/insist/consumer/forservice/group/com.xxx.service/version/ip
         //--/insist/prodiver/forservice/group/com.xxx.service/version/ip
 
-        String groupPath = InsistUtil.getProviderZkPath()+ MiConstants.INSIST_ZK_SLASH+serviceMeta.getGroup();
+        String groupPath = MiUtil.getProviderZkPath()+ MiConstants.INSIST_ZK_SLASH+serviceMeta.getGroup();
         String serviceGroupPath =groupPath+ MiConstants.INSIST_ZK_SLASH+serviceMeta.getInterfaceName();
         String versionServiceGroupPath = serviceGroupPath+ MiConstants.INSIST_ZK_SLASH+serviceMeta.getVersion();
         String versionServiceGroupPathAndIpPort=versionServiceGroupPath+ MiConstants.INSIST_ZK_SLASH
@@ -50,7 +50,7 @@ public class InsistPushProvider {
                 zkClient.addNode(versionServiceGroupPathAndIpPort,true);
             }
 
-            zkClient.setDataForStr(versionServiceGroupPathAndIpPort,InsistUtil.serviceMetaToJson(serviceMeta),-1);
+            zkClient.setDataForStr(versionServiceGroupPathAndIpPort,MiUtil.serviceMetaToJson(serviceMeta),-1);
 
             MiLogger.record(StringUtil.format("InsistSpringProviderBean.push success ! path:%s json:%s",versionServiceGroupPathAndIpPort,JSON.toJSONString(serviceMeta)));
 

@@ -2,7 +2,7 @@ package org.ahstu.mi.consumer.manager;
 
 import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiException;
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.InsistConsumerMeta;
 import org.ahstu.mi.module.ServiceMeta;
 
@@ -25,7 +25,7 @@ public class MiServiceStore {
     }
 
     public static void addByIpAndPort(ServiceMeta serviceMeta) {
-        String ipAndPort = InsistUtil.ipAndPortCreateKey(serviceMeta);
+        String ipAndPort = MiUtil.ipAndPortCreateKey(serviceMeta);
         List<ServiceMeta> list = ipAndPortServiceMetaStore.get(ipAndPort);
         if (list == null) {
             synchronized (INSIST_SERVICE_STORE_LOCK) {
@@ -49,7 +49,7 @@ public class MiServiceStore {
     }
 
     public synchronized static void delAllServiceByServiceMeta(ServiceMeta serviceMeta){
-        String ipAndPort = InsistUtil.ipAndPortCreateKey(serviceMeta);
+        String ipAndPort = MiUtil.ipAndPortCreateKey(serviceMeta);
         List<ServiceMeta> serviceMetaList = ipAndPortServiceMetaStore.get(ipAndPort);
         if(serviceMetaList==null){
             return ;
@@ -62,11 +62,11 @@ public class MiServiceStore {
     }
 
     public static void delOneServiceByServiceMeta(ServiceMeta serviceMeta) {
-        String serviceNameGroupVersion = InsistUtil.serviceGroupVersionCreateKey(serviceMeta.getInterfaceName(),
+        String serviceNameGroupVersion = MiUtil.serviceGroupVersionCreateKey(serviceMeta.getInterfaceName(),
                 serviceMeta.getGroup(), serviceMeta.getVersion());
         InsistServiceList insistServiceList = serviceStore.get(serviceNameGroupVersion);
 
-        insistServiceList.delService(InsistUtil.ipAndPortCreateKey(serviceMeta));
+        insistServiceList.delService(MiUtil.ipAndPortCreateKey(serviceMeta));
 
     }
 
@@ -82,7 +82,7 @@ public class MiServiceStore {
 
 
     public static ServiceMeta getServiceMeta(InsistConsumerMeta meta) {
-        String serviceNameGroupVersion = InsistUtil.serviceGroupVersionCreateKey(meta.getInterfaceName(),
+        String serviceNameGroupVersion = MiUtil.serviceGroupVersionCreateKey(meta.getInterfaceName(),
                 meta.getGroup(), meta.getVersion());
         return getServiceMeta(serviceNameGroupVersion);
     }

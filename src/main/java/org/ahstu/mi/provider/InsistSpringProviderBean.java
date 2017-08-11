@@ -1,6 +1,6 @@
 package org.ahstu.mi.provider;
 
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.provider.factory.ProviderFactory;
 import org.ahstu.mi.provider.manager.InsistPushProvider;
@@ -78,7 +78,7 @@ public class InsistSpringProviderBean implements InitializingBean, ApplicationLi
     }
 
     public void afterPropertiesSet() throws Exception {
-        InsistUtil.insistStartUp();
+        MiUtil.insistStartUp();
 
         InsistProviderMeta insistProviderMeta = ProviderFactory.springProviderToProviderMeta(this);
         InsistProviderStore.add(insistProviderMeta);

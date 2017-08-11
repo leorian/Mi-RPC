@@ -58,7 +58,7 @@ public class InsistZkClient implements IZkClient {
 
     @Override
     public void deleteNode(String node) throws KeeperException, InterruptedException {
-        InsistUtil.firstAddChar(node);
+        MiUtil.firstAddChar(node);
         if (has(node)) {
             zk.delete(node, -1);
         }
@@ -119,7 +119,7 @@ public class InsistZkClient implements IZkClient {
 
     @Override
     public void addNode(String node, boolean ephemeral) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         if (ephemeral) {
             createEphemeral(node);
         } else {
@@ -129,7 +129,7 @@ public class InsistZkClient implements IZkClient {
 
     @Override
     public void addWatcher(String node, Watcher watcher, WatcherType watcherType) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         if (WatcherType.EXIST.name().equals(watcherType.name())) {
             addExistsWatcher(node, watcher);
         } else if (WatcherType.CHILDREN.name().equals(watcherType.name())) {
@@ -141,7 +141,7 @@ public class InsistZkClient implements IZkClient {
 
     @Override
     public List<String> getNodeChildren(String node) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         Stat stat = zk.exists(node, false);
         if (stat == null) {
             return new ArrayList<String>();
@@ -153,13 +153,13 @@ public class InsistZkClient implements IZkClient {
 
     @Override
     public void setData(String node, byte[] data, int version) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         zk.setData(node, data, version);
     }
 
     @Override
     public byte[] getData(String node, int version) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         Stat stat = new Stat();
         stat.setAversion(version);
         return zk.getData(node, ZkDataWatcher.getInstance(), stat);
@@ -179,7 +179,7 @@ public class InsistZkClient implements IZkClient {
 
     public void setDataForStr(String node, String data, int version) throws Exception {
 
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
 
         if (StringUtil.isBlank(data)) {
             return;
@@ -192,29 +192,29 @@ public class InsistZkClient implements IZkClient {
     }
 
     public boolean has(String node) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         return zk.exists(node, false) != null;
     }
 
     private void addChildrenChangeWatcher(String node, Watcher watcher) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         zk.getChildren(node, watcher);
     }
 
     public void addExistsWatcher(String node, Watcher watcher) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         zk.exists(node, watcher);
     }
 
     private void addDataChangeWathcer(String node, Watcher watcher) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         Stat stat = new Stat();
         stat.setAversion(-1);
         zk.getData(node, watcher, stat);
     }
 
     public void addChildWatcher(String node, Watcher watcher) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         zk.getChildren(node, watcher);
     }
 
@@ -235,7 +235,7 @@ public class InsistZkClient implements IZkClient {
     }
 
     private void create(String node, CreateMode createMode) throws KeeperException, InterruptedException {
-        node = InsistUtil.firstAddChar(node);
+        node = MiUtil.firstAddChar(node);
         Stat stat = zk.exists(node, true);
         String createNode = node;
         if (stat == null) {
@@ -254,7 +254,7 @@ public class InsistZkClient implements IZkClient {
 
 
     public List<String> getTreeForList(String path) throws Exception {
-        path = InsistUtil.firstAddChar(path);
+        path = MiUtil.firstAddChar(path);
         Stat stat = zk.exists(path, false);
         if (stat == null) {
             return new ArrayList<String>();

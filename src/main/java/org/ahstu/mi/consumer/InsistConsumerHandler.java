@@ -46,7 +46,7 @@ public class InsistConsumerHandler  implements InvocationHandler {
         }
 
         MiSendDTO sendDTO ;
-        String requestId = InsistUtil.getRequestId();
+        String requestId = MiUtil.getRequestId();
         MiResult result = null;
         int index = 1;
         boolean callSuccess=false;
@@ -81,14 +81,14 @@ public class InsistConsumerHandler  implements InvocationHandler {
                 } else if (MiError.CLOSED_SELECTOR_EXCEPTION.getErrorCode().equals(ie.getErrorCode())) {
                     //删除服务的本地地址 找到服务删除这个IP
                     MiServiceStore.delAllServiceByServiceMeta(this.serviceMeta);
-                    NettyChannelHandlerStore.remove(InsistUtil.ipAndPortCreateKey(this.serviceMeta));
+                    NettyChannelHandlerStore.remove(MiUtil.ipAndPortCreateKey(this.serviceMeta));
                     if(index>3){
                         throw new MiException(MiError.CLOSED_SELECTOR_EXCEPTION, ie);
                     }
 
                 } else if (MiError.CONNECTION_INTERRUPT.getErrorCode().equals(ie.getErrorCode())) {
                     //删除服务的本地地址 找到服务删除这个IP
-                    NettyChannelHandlerStore.remove(InsistUtil.ipAndPortCreateKey(this.serviceMeta));
+                    NettyChannelHandlerStore.remove(MiUtil.ipAndPortCreateKey(this.serviceMeta));
                     if(index>3){
                         throw new MiException(MiError.CONNECTION_INTERRUPT, ie);
                     }
@@ -129,7 +129,7 @@ public class InsistConsumerHandler  implements InvocationHandler {
                 serviceMeta.getPort(),
                 this.meta.getGroup(),
                 this.meta.getClientTimeout(),
-                InsistUtil.geLocalIp(),
+                MiUtil.geLocalIp(),
                 this.meta.getVersion()
         );
     }

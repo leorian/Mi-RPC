@@ -1,7 +1,6 @@
 package org.ahstu.mi.consumer.manager;
 
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by renyueliang on 17/5/16.

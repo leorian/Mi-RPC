@@ -41,7 +41,7 @@ public class NettyServer  extends RpcServer {
             synchronized (NETTY_SERVER_LOCK){
 
                 if(nettyServer==null){
-                    String ip= InsistUtil.geLocalIp();
+                    String ip= MiUtil.geLocalIp();
                     nettyServer=new NettyServer(ip,port);
                 }
             }

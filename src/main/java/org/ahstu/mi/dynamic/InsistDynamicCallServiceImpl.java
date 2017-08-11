@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.ahstu.mi.common.MiDynamicDTO;
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.provider.InsistProviderMeta;
 import org.ahstu.mi.provider.InsistProviderStore;
 import org.apache.commons.beanutils.MethodUtils;
@@ -80,7 +80,7 @@ public class InsistDynamicCallServiceImpl implements InsistDynamicCallService {
         String param = insistDynamicDTO.getParam();//参数
         JSONArray jsonArray = JSON.parseArray(param);
         InsistProviderMeta providerMeta =
-                InsistProviderStore.get(InsistUtil.serviceGroupVersionCreateKey(serviceName, group, version));
+                InsistProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
         Object provider = providerMeta.getRef();
         Class providerClass = provider.getClass();
         Method[] methods = providerClass.getDeclaredMethods();
@@ -373,7 +373,7 @@ public class InsistDynamicCallServiceImpl implements InsistDynamicCallService {
         String group = insistDynamicDTO.getGroup();//组名
         String version = insistDynamicDTO.getVersion();//版本名称
         InsistProviderMeta providerMeta =
-                InsistProviderStore.get(InsistUtil.serviceGroupVersionCreateKey(serviceName, group, version));
+                InsistProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
         Object provider = providerMeta.getRef();
         Class providerClass = provider.getClass();
         try {
