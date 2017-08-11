@@ -87,7 +87,7 @@ public class InsistSpringConsumerBean implements FactoryBean,ApplicationContextA
         this.serviceClass = this.meta.getInterfaceClass();
 
         this.proxy = Proxy.newProxyInstance(this.serviceClass.getClassLoader(), new Class[]{this.serviceClass},
-                new InsistConsumerHandler(this.meta));
+                new MiConsumerHandler(this.meta));
     }
 
     public Class<?> getObjectType() {

@@ -13,12 +13,12 @@ import java.lang.reflect.Method;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistConsumerHandler  implements InvocationHandler {
+public class MiConsumerHandler implements InvocationHandler {
 
     private MiConsumerMeta meta;
     private ServiceMeta serviceMeta;
 
-    public InsistConsumerHandler(MiConsumerMeta meta ){
+    public MiConsumerHandler(MiConsumerMeta meta ){
         this.meta=meta;
     }
 
@@ -62,7 +62,7 @@ public class InsistConsumerHandler  implements InvocationHandler {
                 callSuccess=true;
             } catch (MiException ie) {
 
-                MiLogger.record(StringUtil.format("InsistConsumerHandler.excute error ! requestId:%s,serviceName:%s,group:%s,version:%s errorCode:%s",
+                MiLogger.record(StringUtil.format("MiConsumerHandler.excute error ! requestId:%s,serviceName:%s,group:%s,version:%s errorCode:%s",
                         requestId,
                         this.meta.getInterfaceName(),
                         this.meta.getGroup(),
@@ -95,7 +95,7 @@ public class InsistConsumerHandler  implements InvocationHandler {
                 }
             } catch (Throwable e) {
 
-                MiLogger.record(StringUtil.format("InsistConsumerHandler.excute error ! requestId:%s,serviceName:%s,group:%s,version:%s errorCode:%s",
+                MiLogger.record(StringUtil.format("MiConsumerHandler.excute error ! requestId:%s,serviceName:%s,group:%s,version:%s errorCode:%s",
                         requestId,
                         this.meta.getInterfaceName(),
                         this.meta.getGroup(),

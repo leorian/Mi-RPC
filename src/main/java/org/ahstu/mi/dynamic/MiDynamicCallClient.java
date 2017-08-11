@@ -61,7 +61,7 @@ public class MiDynamicCallClient {
                 callSuccess = true;
             } catch (MiException ie) {
 
-                MiLogger.record(StringUtil.format("InsistConsumerHandler.excute error ! " +
+                MiLogger.record(StringUtil.format("MiConsumerHandler.excute error ! " +
                                 "requestId:%s,serviceName:%s,group:%s,version:%s errorCode:%s",
                         requestId,
                         this.meta.getInterfaceName(),
@@ -93,7 +93,7 @@ public class MiDynamicCallClient {
                 }
             } catch (Throwable e) {
 
-                MiLogger.record(StringUtil.format("InsistConsumerHandler.excute error ! " +
+                MiLogger.record(StringUtil.format("MiConsumerHandler.excute error ! " +
                                 "requestId:%s,serviceName:%s,group:%s,version:%s errorCode:%s",
                         requestId,
                         this.meta.getInterfaceName(),
