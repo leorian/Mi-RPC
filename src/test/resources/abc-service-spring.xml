@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:mi="http://org.ahstu.com/mi" xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:mi="http://www.ahstu.org/mi" xmlns="http://www.springframework.org/schema/beans"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
        		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-       		http://org.ahstu.com/mi mi.xsd"
+       		http://www.ahstu.org/mi mi.xsd"
 	   default-autowire="byName">
 
 <!--<mi:consumer id="s1" interface="com.bozhong.mi.consumer.MiSpringConsumerBean" version="1.0" group="external" />-->
