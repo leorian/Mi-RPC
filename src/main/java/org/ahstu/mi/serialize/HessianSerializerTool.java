@@ -5,7 +5,6 @@ import com.caucho.hessian.io.HessianOutput;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 /**
  * Created by xiezg@317hu.com on 2017/8/11 0011.
