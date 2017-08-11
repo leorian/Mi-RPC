@@ -1,6 +1,6 @@
 package org.ahstu.mi.test;
 
-import org.ahstu.mi.lock.InsistLock;
+import org.ahstu.mi.lock.MiLock;
 
 import java.util.UUID;
 
@@ -11,7 +11,7 @@ public class InsistLockTest {
 
     public static void main(String[] args) throws Throwable{
 
-       final InsistLock insistLock = new InsistLock(UUID.randomUUID().toString());
+       final MiLock insistLock = new MiLock(UUID.randomUUID().toString());
 
         Thread thread=new Thread(new Runnable() {
             @Override

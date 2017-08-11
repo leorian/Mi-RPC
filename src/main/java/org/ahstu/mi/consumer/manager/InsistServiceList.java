@@ -5,7 +5,7 @@ import org.ahstu.mi.common.MiError;
 import org.ahstu.mi.common.MiException;
 import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiUtil;
-import org.ahstu.mi.lock.InsistLock;
+import org.ahstu.mi.lock.MiLock;
 import org.ahstu.mi.module.ServiceMeta;
 
 import java.util.*;
@@ -15,7 +15,7 @@ import java.util.*;
  */
 public class InsistServiceList {
 
-    InsistLock lock;
+    MiLock lock;
 
     List<ServiceMeta> providers = new Vector<ServiceMeta>();
 
@@ -35,7 +35,7 @@ public class InsistServiceList {
         this.max = providers.size();
         this.providers = providers;
         this.serviceNameGroupVersion = serviceNameGroupVersion;
-        lock = new InsistLock(serviceNameGroupVersion);
+        lock = new MiLock(serviceNameGroupVersion);
         index = new MiAtomicInteger(0);
 
 

@@ -3,14 +3,14 @@ package org.ahstu.mi.lock;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistLock  {
+public class MiLock {
 
     private String lockId;
 
     private boolean isLock;
 
 
-    public InsistLock(String lockId) {
+    public MiLock(String lockId) {
         this.lockId = lockId;
     }
 

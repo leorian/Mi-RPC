@@ -3,7 +3,7 @@ package org.ahstu.mi.rpc.netty;
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.consumer.manager.MiResultStore;
-import org.ahstu.mi.lock.InsistLock;
+import org.ahstu.mi.lock.MiLock;
 import org.ahstu.mi.lock.InsistLockStore;
 import org.ahstu.mi.rpc.RpcCallExcutor;
 import org.ahstu.mi.rpc.netty.client.NettyClient;
@@ -44,7 +44,7 @@ public class RpcNettyCallExcutor implements RpcCallExcutor {
         try {
             try {
                 final NettyClient nettyClient = NettyClient.getInstance();
-                InsistLock insistLock = new InsistLock(insistSendDTO.getRequestId());
+                MiLock insistLock = new MiLock(insistSendDTO.getRequestId());
                 InsistLockStore.add(insistLock);
                 synchronized (insistLock) {
                     nettyClient.send(insistSendDTO);

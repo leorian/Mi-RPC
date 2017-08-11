@@ -11,9 +11,9 @@ import java.util.Map;
  */
 public class InsistLockStore {
 
-  private static Map<String,InsistLock>  insistLockStore =new HashMap<String, InsistLock>();
+  private static Map<String,MiLock>  insistLockStore =new HashMap<String, MiLock>();
 
-  public static void add(InsistLock insistLock){
+  public static void add(MiLock insistLock){
 
       if(insistLock==null || insistLock.getLockId()==null || insistLock.getLockId().isEmpty()
              ){
@@ -29,7 +29,7 @@ public class InsistLockStore {
   }
 
 
-  public static InsistLock get(String lockId){
+  public static MiLock get(String lockId){
       return insistLockStore.get(lockId);
   }
 

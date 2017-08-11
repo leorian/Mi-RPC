@@ -1,7 +1,7 @@
 package org.ahstu.mi.rpc.netty.client;
 
 import com.bozhong.common.util.StringUtil;
-import org.ahstu.mi.lock.InsistLock;
+import org.ahstu.mi.lock.MiLock;
 import org.ahstu.mi.lock.InsistLockStore;
 import org.ahstu.mi.serialize.InsistFstDecoder;
 import org.ahstu.mi.serialize.InsistFstEncoder;
@@ -95,7 +95,7 @@ public class NettyClient {
             synchronized (NETTYCLIENT_LOCK) {
                 chc = NettyChannelHandlerStore.get(chcKey);
                 if (chc == null) {
-                    final InsistLock insistLock = new InsistLock(chcKey);
+                    final MiLock insistLock = new MiLock(chcKey);
                     InsistLockStore.add(insistLock);
                     synchronized (insistLock) {
                         try {
