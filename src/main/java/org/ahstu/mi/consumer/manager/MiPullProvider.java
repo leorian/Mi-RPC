@@ -18,7 +18,7 @@ import java.util.Set;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistPullProvider  {
+public class MiPullProvider {
 
 
     private static Set<String> syncPathStore = new HashSet<String>();
@@ -32,7 +32,7 @@ public class InsistPullProvider  {
             return false;
         }
 
-        synchronized (InsistPullProvider.class){
+        synchronized (MiPullProvider.class){
 
             if(syncPathStore.contains(path)){
                 return false;
@@ -69,9 +69,9 @@ public class InsistPullProvider  {
 
 
 
-        MiLogger.record(StringUtil.format("************* InsistPullProvider.pull start ! path:%s ****************",path));
+        MiLogger.record(StringUtil.format("************* MiPullProvider.pull start ! path:%s ****************",path));
         if(!addPath(path)){
-            MiLogger.record(StringUtil.format("************* InsistPullProvider.pull repeat so stop this pull ! path:%s ****************",path));
+            MiLogger.record(StringUtil.format("************* MiPullProvider.pull repeat so stop this pull ! path:%s ****************",path));
             return ;
         }
         try {
@@ -89,14 +89,14 @@ public class InsistPullProvider  {
             List<ServiceMeta> serviceMetas=new ArrayList<ServiceMeta>();
 
             if(list==null || list.size()==0){
-                MiLogger.record(StringUtil.format("************* InsistPullProvider.pull error not find node ! path:%s ****************",path));
+                MiLogger.record(StringUtil.format("************* MiPullProvider.pull error not find node ! path:%s ****************",path));
                 return ;
             }else {
 
                 for (String ipAndPort : list) {
                     String json = MiZkClient.getInstance().getDataForStr(path + MiConstants.MI_ZK_SLASH + ipAndPort, -1);
                     if (StringUtil.isBlank(json)) {
-                        MiLogger.record(StringUtil.format("InsistPullProvider.pull path:%s json is null", path + MiConstants.MI_ZK_SLASH + ipAndPort));
+                        MiLogger.record(StringUtil.format("MiPullProvider.pull path:%s json is null", path + MiConstants.MI_ZK_SLASH + ipAndPort));
                         continue;
                     }
                     ServiceMeta serviceMeta = MiUtil.jsonToServiceMeta(json);
@@ -104,27 +104,27 @@ public class InsistPullProvider  {
                 }
             }
 
-            InsistServiceList miServiceList =new InsistServiceList(serviceMetas, MiUtil.serviceGroupVersionCreateKey(
+            MiServiceList miServiceList =new MiServiceList(serviceMetas, MiUtil.serviceGroupVersionCreateKey(
                     serviceName,
                     group,
                     version));
 
             MiServiceStore.add(miServiceList);
 
-            MiLogger.record(StringUtil.format("************* InsistPullProvider.pull success ! path:%s ****************",path));
+            MiLogger.record(StringUtil.format("************* MiPullProvider.pull success ! path:%s ****************",path));
 
         }catch (Throwable e){
-            MiLogger.record(StringUtil.format("InsistPullProvider.pull error ! path:%s errorCode:%s",path,e.getMessage()),e);
+            MiLogger.record(StringUtil.format("MiPullProvider.pull error ! path:%s errorCode:%s",path,e.getMessage()),e);
         }finally {
             try {
                 removePath(path);
-                MiLogger.record(StringUtil.format("************* InsistPullProvider.pull removePath sucucess ! path:%s ****************",path));
+                MiLogger.record(StringUtil.format("************* MiPullProvider.pull removePath sucucess ! path:%s ****************",path));
                 //addChildWatcher
-                MiLogger.record(StringUtil.format("************* InsistPullProvider.pull addChildWatcher start ! path:%s ****************",path));
+                MiLogger.record(StringUtil.format("************* MiPullProvider.pull addChildWatcher start ! path:%s ****************",path));
                 MiZkClient.getInstance().addChildWatcher(path, ZkChildrenWatcher.getInstance());
-                MiLogger.record(StringUtil.format("************* InsistPullProvider.pull addChildWatcher success ! path:%s ****************",path));
+                MiLogger.record(StringUtil.format("************* MiPullProvider.pull addChildWatcher success ! path:%s ****************",path));
             }catch (Throwable e1){
-                MiLogger.record("InsistPullProvider.pull path:"+path+" errorCode:"+e1.getMessage(),e1);
+                MiLogger.record("MiPullProvider.pull path:"+path+" errorCode:"+e1.getMessage(),e1);
             }
         }
 

@@ -3,8 +3,8 @@ package org.ahstu.mi.zk;
 import com.alibaba.fastjson.JSON;
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
-import org.ahstu.mi.consumer.manager.InsistPullProvider;
-import org.ahstu.mi.consumer.manager.InsistPushConsumer;
+import org.ahstu.mi.consumer.manager.MiPullProvider;
+import org.ahstu.mi.consumer.manager.MiPushConsumer;
 import org.ahstu.mi.provider.manager.MiPushProvider;
 import org.ahstu.mi.zk.api.IZkClient;
 import org.ahstu.mi.zk.api.WatcherType;
@@ -77,9 +77,9 @@ public class MiZkClient implements IZkClient {
     @Override
     public void reconnect() throws IOException, InterruptedException, KeeperException {
         connect();
-        InsistPullProvider.pullAll();
+        MiPullProvider.pullAll();
         MiPushProvider.pushAll();
-        InsistPushConsumer.pushAll();
+        MiPushConsumer.pushAll();
     }
 
     @Override

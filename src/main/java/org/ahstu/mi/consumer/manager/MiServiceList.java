@@ -13,7 +13,7 @@ import java.util.*;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistServiceList {
+public class MiServiceList {
 
     MiLock lock;
 
@@ -31,7 +31,7 @@ public class InsistServiceList {
 
     private String serviceNameGroupVersion;
 
-    public InsistServiceList(List<ServiceMeta> providers, String serviceNameGroupVersion) {
+    public MiServiceList(List<ServiceMeta> providers, String serviceNameGroupVersion) {
         this.max = providers.size();
         this.providers = providers;
         this.serviceNameGroupVersion = serviceNameGroupVersion;
@@ -143,7 +143,7 @@ public class InsistServiceList {
             resetIndex();
             return getService();
         }catch (Throwable e){
-            MiLogger.record(StringUtil.format("InsistServiceList.getService error ! serviceNameGroupVersion%s index:%s ",serviceNameGroupVersion,index.get()),e);
+            MiLogger.record(StringUtil.format("MiServiceList.getService error ! serviceNameGroupVersion%s index:%s ",serviceNameGroupVersion,index.get()),e);
             throw new MiException(e.getMessage(),e);
         }
     }

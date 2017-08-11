@@ -3,7 +3,7 @@ package org.ahstu.mi.zk;
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.MiConstants;
 import org.ahstu.mi.common.MiLogger;
-import org.ahstu.mi.consumer.manager.InsistPullProvider;
+import org.ahstu.mi.consumer.manager.MiPullProvider;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 
@@ -52,13 +52,13 @@ public class ZkChildrenWatcher implements Watcher {
                     && StringUtil.isNotBlank(watchedEvent.getPath())){
               String[] pathArr =  watchedEvent.getPath().split(MiConstants.MI_ZK_SLASH);
               if(pathArr.length==7){
-                   InsistPullProvider.pull(watchedEvent.getPath());
+                   MiPullProvider.pull(watchedEvent.getPath());
                }
 
             }
 
         } catch (Throwable e) {
-            MiLogger.record(StringUtil.format("ZkChildrenWatcher.process  InsistPullProvider.pull error ! path:%s errorCode:%s",
+            MiLogger.record(StringUtil.format("ZkChildrenWatcher.process  MiPullProvider.pull error ! path:%s errorCode:%s",
                     watchedEvent.getPath(),
                     e.getMessage()), e);
         }finally {

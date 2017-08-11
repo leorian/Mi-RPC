@@ -14,12 +14,12 @@ import org.ahstu.mi.zk.api.IZkClient;
 /**
  * Created by renyueliang on 17/5/22.
  */
-public class InsistPushConsumer {
+public class MiPushConsumer {
 
     public static void push(MiConsumerMeta clientMeta){
 
 
-        MiLogger.record(StringUtil.format("InsistPushConsumer.push start ! json:"+ JSON.toJSONString(clientMeta)));
+        MiLogger.record(StringUtil.format("MiPushConsumer.push start ! json:"+ JSON.toJSONString(clientMeta)));
 
         IZkClient zkClient =  MiZkClient.getInstance();
 
@@ -50,12 +50,12 @@ public class InsistPushConsumer {
 
             zkClient.setDataForStr(versionServiceGroupPathAndIpPort,MiUtil.clientMetaToJson(clientMeta),-1);
 
-            MiLogger.record(StringUtil.format("InsistPushConsumer.push success ! json:"+ MiUtil.clientMetaToJson(clientMeta)));
+            MiLogger.record(StringUtil.format("MiPushConsumer.push success ! json:"+ MiUtil.clientMetaToJson(clientMeta)));
 
 
         }catch (Throwable e){
 
-            MiLogger.record(StringUtil.format("InsistPushConsumer.push error ! json:%s %s errorCode:%s"
+            MiLogger.record(StringUtil.format("MiPushConsumer.push error ! json:%s %s errorCode:%s"
                     ,MiUtil.clientMetaToJson(clientMeta),
                     MiError.CLIENT_META_REGISTER_EXCEPTION.getErrorCode(),
                     e.getMessage()

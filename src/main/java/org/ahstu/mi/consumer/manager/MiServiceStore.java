@@ -16,11 +16,11 @@ public class MiServiceStore {
     private static String MI_SERVICE_STORE_LOCK = UUID.randomUUID().toString();
 
     //manager all serviceName group version  service ip and port
-    private static Map<String, InsistServiceList> serviceStore = new HashMap<String, InsistServiceList>();
+    private static Map<String, MiServiceList> serviceStore = new HashMap<String, MiServiceList>();
     // manager all ipAndPort service
     private static Map<String, List<ServiceMeta>> ipAndPortServiceMetaStore = new Hashtable<String, List<ServiceMeta>>();
 
-    public static void add(InsistServiceList miServiceList) {
+    public static void add(MiServiceList miServiceList) {
         serviceStore.put(miServiceList.getServiceNameGroupVersion(), miServiceList);
     }
 
@@ -43,7 +43,7 @@ public class MiServiceStore {
         return ipAndPortServiceMetaStore.get(ipAndPort);
     }
 
-    public static Collection<InsistServiceList> getAll() {
+    public static Collection<MiServiceList> getAll() {
         return serviceStore.values();
 
     }
@@ -64,7 +64,7 @@ public class MiServiceStore {
     public static void delOneServiceByServiceMeta(ServiceMeta serviceMeta) {
         String serviceNameGroupVersion = MiUtil.serviceGroupVersionCreateKey(serviceMeta.getInterfaceName(),
                 serviceMeta.getGroup(), serviceMeta.getVersion());
-        InsistServiceList miServiceList = serviceStore.get(serviceNameGroupVersion);
+        MiServiceList miServiceList = serviceStore.get(serviceNameGroupVersion);
 
         miServiceList.delService(MiUtil.ipAndPortCreateKey(serviceMeta));
 
@@ -74,7 +74,7 @@ public class MiServiceStore {
         serviceStore.remove(serviceNameGroupVersion);
     }
 
-    public static InsistServiceList get(String serviceNameGroupVersion) {
+    public static MiServiceList get(String serviceNameGroupVersion) {
 
         return serviceStore.get(serviceNameGroupVersion);
 
@@ -90,7 +90,7 @@ public class MiServiceStore {
 
     public static ServiceMeta getServiceMeta(String serviceNameGroupVersion) {
 
-        InsistServiceList serviceList = get(serviceNameGroupVersion);
+        MiServiceList serviceList = get(serviceNameGroupVersion);
 
         if (serviceList == null) {
             throw new MiException(MiError.NOT_FIND_SERVICE.getErrorCode(), serviceNameGroupVersion + " not find !");

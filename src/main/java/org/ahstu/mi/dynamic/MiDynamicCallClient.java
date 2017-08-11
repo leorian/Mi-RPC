@@ -3,7 +3,7 @@ package org.ahstu.mi.dynamic;
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.consumer.MiConsumerMeta;
-import org.ahstu.mi.consumer.manager.InsistPullProvider;
+import org.ahstu.mi.consumer.manager.MiPullProvider;
 import org.ahstu.mi.consumer.manager.MiServiceStore;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.rpc.netty.client.NettyChannelHandlerStore;
@@ -22,7 +22,7 @@ public class MiDynamicCallClient {
         this.meta.setInterfaceName(serviceName);
         this.meta.setGroup(group);
         this.meta.setVersion(version);
-        InsistPullProvider.pull(this.meta);
+        MiPullProvider.pull(this.meta);
         this.miDynamicDTO = new MiDynamicDTO();
         this.miDynamicDTO.setServiceName(serviceName);
         this.miDynamicDTO.setGroup(group);

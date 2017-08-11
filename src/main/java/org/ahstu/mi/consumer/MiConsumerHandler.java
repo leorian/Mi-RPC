@@ -2,7 +2,7 @@ package org.ahstu.mi.consumer;
 
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
-import org.ahstu.mi.consumer.manager.InsistPullProvider;
+import org.ahstu.mi.consumer.manager.MiPullProvider;
 import org.ahstu.mi.consumer.manager.MiServiceStore;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.rpc.netty.client.NettyChannelHandlerStore;
@@ -71,7 +71,7 @@ public class MiConsumerHandler implements InvocationHandler {
 
                 if (MiError.NOT_FIND_SERVICE.getErrorCode().equals(ie.getErrorCode())) {
                     //防止重复 启动一个线程一个服务一个线程
-                    InsistPullProvider.pull(meta);
+                    MiPullProvider.pull(meta);
                     //服务不存在异常
                     throw new MiException(MiError.NOT_FIND_SERVICE, ie);
                 } else if (MiError.CLIENT_TIME_OUT.getErrorCode().equals(ie.getErrorCode())) {

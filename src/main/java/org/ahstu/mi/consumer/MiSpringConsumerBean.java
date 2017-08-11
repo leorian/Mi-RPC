@@ -2,8 +2,8 @@ package org.ahstu.mi.consumer;
 
 import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.factory.ConsumerFactory;
-import org.ahstu.mi.consumer.manager.InsistPullProvider;
-import org.ahstu.mi.consumer.manager.InsistPushConsumer;
+import org.ahstu.mi.consumer.manager.MiPullProvider;
+import org.ahstu.mi.consumer.manager.MiPushConsumer;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.FactoryBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -101,8 +101,8 @@ public class MiSpringConsumerBean implements FactoryBean,ApplicationContextAware
     public void afterPropertiesSet() throws Exception {
         MiUtil.miStartUp();
         init();
-        InsistPullProvider.pull(this.meta);
-        InsistPushConsumer.push(this.meta);
+        MiPullProvider.pull(this.meta);
+        MiPushConsumer.push(this.meta);
     }
 
     @Override
