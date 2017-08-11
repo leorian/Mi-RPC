@@ -2,8 +2,8 @@ package org.ahstu.mi.rpc.netty.server;
 
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.rpc.RpcServer;
-import org.ahstu.mi.serialize.InsistFstDecoder;
-import org.ahstu.mi.serialize.InsistFstEncoder;
+import org.ahstu.mi.serialize.MiFstDecoder;
+import org.ahstu.mi.serialize.MiFstEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
@@ -114,8 +114,8 @@ public class NettyServer  extends RpcServer {
                 protected void initChannel(SocketChannel socketChannel)
                         throws Exception {
                     ChannelPipeline p = socketChannel.pipeline();
-                    p.addLast(new InsistFstDecoder(MiConstants.MAX_OBJECT_SIZE,MiSendDTO.class));
-                    p.addLast(new InsistFstEncoder());
+                    p.addLast(new MiFstDecoder(MiConstants.MAX_OBJECT_SIZE,MiSendDTO.class));
+                    p.addLast(new MiFstEncoder());
                     p.addLast(new RpcNettyServerCallHandler());
                 }
             });

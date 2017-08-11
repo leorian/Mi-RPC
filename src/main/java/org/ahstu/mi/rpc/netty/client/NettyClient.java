@@ -3,8 +3,8 @@ package org.ahstu.mi.rpc.netty.client;
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.lock.MiLock;
 import org.ahstu.mi.lock.MiLockStore;
-import org.ahstu.mi.serialize.InsistFstDecoder;
-import org.ahstu.mi.serialize.InsistFstEncoder;
+import org.ahstu.mi.serialize.MiFstDecoder;
+import org.ahstu.mi.serialize.MiFstEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.PooledByteBufAllocator;
 import io.netty.channel.*;
@@ -65,8 +65,8 @@ public class NettyClient {
                 @Override
                 protected void initChannel(SocketChannel socketChannel) throws Exception {
 
-                    socketChannel.pipeline().addLast(new InsistFstDecoder(MiConstants.MAX_OBJECT_SIZE, MiResult.class));
-                    socketChannel.pipeline().addLast(new InsistFstEncoder());
+                    socketChannel.pipeline().addLast(new MiFstDecoder(MiConstants.MAX_OBJECT_SIZE, MiResult.class));
+                    socketChannel.pipeline().addLast(new MiFstEncoder());
 
                     socketChannel.pipeline().addLast(new RpcNettyClientCallHandler());
 

@@ -8,11 +8,11 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 /**
  * Created by renyueliang on 17/5/17.
  */
-public class InsistFstDecoder  extends LengthFieldBasedFrameDecoder {
+public class MiFstDecoder extends LengthFieldBasedFrameDecoder {
 
     private Class clazz;
 
-    public InsistFstDecoder(int maxObjectSize,Class clazz) {
+    public MiFstDecoder(int maxObjectSize, Class clazz) {
         super(maxObjectSize, 0, 4, 0, 4);
         this.clazz = clazz;
     }

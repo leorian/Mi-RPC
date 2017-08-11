@@ -8,7 +8,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 /**
  * Created by renyueliang on 17/5/17.
  */
-public class InsistFstEncoder extends MessageToByteEncoder<Object> {
+public class MiFstEncoder extends MessageToByteEncoder<Object> {
 
 
     private static final byte[] LENGTH_PLACEHOLDER = new byte[4];
