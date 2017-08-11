@@ -1,6 +1,5 @@
 package org.ahstu.mi.serialize;
 
-import com.yx.serializer.util.HessianSerializerTool;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
@@ -25,7 +24,7 @@ public class MiFstDecoder extends LengthFieldBasedFrameDecoder {
         }
         byte[] out = new byte[frame.readableBytes()];
         frame.readBytes(out);
-        return HessianSerializerTool.parseBytesToObject(out, clazz);
+        return HessianSerializerTool.deserialize(out, clazz);
     }
 
     @Override
