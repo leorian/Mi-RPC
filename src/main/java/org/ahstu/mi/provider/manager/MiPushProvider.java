@@ -27,10 +27,10 @@ public class MiPushProvider {
         //--/insist/consumer/forservice/group/com.xxx.service/version/ip
         //--/insist/prodiver/forservice/group/com.xxx.service/version/ip
 
-        String groupPath = MiUtil.getProviderZkPath()+ MiConstants.INSIST_ZK_SLASH+serviceMeta.getGroup();
-        String serviceGroupPath =groupPath+ MiConstants.INSIST_ZK_SLASH+serviceMeta.getInterfaceName();
-        String versionServiceGroupPath = serviceGroupPath+ MiConstants.INSIST_ZK_SLASH+serviceMeta.getVersion();
-        String versionServiceGroupPathAndIpPort=versionServiceGroupPath+ MiConstants.INSIST_ZK_SLASH
+        String groupPath = MiUtil.getProviderZkPath()+ MiConstants.MI_ZK_SLASH+serviceMeta.getGroup();
+        String serviceGroupPath =groupPath+ MiConstants.MI_ZK_SLASH+serviceMeta.getInterfaceName();
+        String versionServiceGroupPath = serviceGroupPath+ MiConstants.MI_ZK_SLASH+serviceMeta.getVersion();
+        String versionServiceGroupPathAndIpPort=versionServiceGroupPath+ MiConstants.MI_ZK_SLASH
                 +serviceMeta.getIp()
                 + MiConstants.LOWER_HORIZONTAL_LINE
                 +serviceMeta.getPort();

@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class MiDynamicCallServiceProviderRegister implements BeanFactoryPostProcessor {
 
     private static final ReentrantLock reentrantLock = new ReentrantLock();
-    private static volatile boolean INSIST_START_SUCCESS = false;
+    private static volatile boolean MI_START_SUCCESS = false;
     private DefaultListableBeanFactory beanFactory;
 
     @Override
@@ -23,13 +23,13 @@ public class MiDynamicCallServiceProviderRegister implements BeanFactoryPostProc
     }
 
     public static void startDynamicPipeline(DefaultListableBeanFactory beanFactory) {
-        if (INSIST_START_SUCCESS) {
+        if (MI_START_SUCCESS) {
             return;
         }
 
         try {
             reentrantLock.lock();
-            if (INSIST_START_SUCCESS) {
+            if (MI_START_SUCCESS) {
                 return;
             }
             BeanDefinitionBuilder insistDynamicCallServiceBuilder = BeanDefinitionBuilder.
@@ -46,7 +46,7 @@ public class MiDynamicCallServiceProviderRegister implements BeanFactoryPostProc
             beanFactory.registerBeanDefinition("insistDynamicCallServiceProviderRegister",
                     InsistDynamicCallServiceProviderRegisterBuilder.getBeanDefinition());
             System.out.println("XXXXXXXXXX");
-            INSIST_START_SUCCESS = true;
+            MI_START_SUCCESS = true;
         } catch (Throwable throwable) {
             throwable.printStackTrace();
             if (beanFactory.getBean("insistDynamicCallServiceProviderRegister") == null) {

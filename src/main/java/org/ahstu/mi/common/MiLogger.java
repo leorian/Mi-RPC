@@ -18,8 +18,8 @@ public class MiLogger {
 
 
     private static Logger logger;
-    private final static String INSIST_LOG_NAME = "insistlog";
-    private final static String INSIST_LOG_FILE = "insist.log";
+    private final static String MI_LOG_NAME = "insistlog";
+    private final static String MI_LOG_FILE = "insist.log";
     //%-d{yyyy-MM-dd HH:mm:ss}  %m%n
     private final static String PATTERN_LAYOUT = "%-d{yyyy-MM-dd HH:mm:ss}  %m%n";
 
@@ -96,7 +96,7 @@ public class MiLogger {
                     getSysLogger().warn(" InsistLogger start !");
 
                     try {
-                       MiRollingFileAppender appender = (MiRollingFileAppender) logger.getAppender(INSIST_LOG_NAME);
+                       MiRollingFileAppender appender = (MiRollingFileAppender) logger.getAppender(MI_LOG_NAME);
 
                         if (appender != null) {
                             getSysLogger().warn("appendName:" + appender.getName());
@@ -118,13 +118,13 @@ public class MiLogger {
     }
 
     private static void init() throws Throwable {
-        logger = Logger.getLogger(INSIST_LOG_NAME);
+        logger = Logger.getLogger(MI_LOG_NAME);
 
         logger.setAdditivity(false);
         //additivity
         MiRollingFileAppender appender = new MiRollingFileAppender();
 
-        String logFilePath = getLogFilePath()+INSIST_LOG_FILE;
+        String logFilePath = getLogFilePath()+MI_LOG_FILE;
         //是否按照应用文件夹存放不同的日志文件：主要是解决多个应用放在同一个服务器上，日志在一个unifiedlog.log文件里面
 
         appender.setFile(logFilePath);
@@ -132,7 +132,7 @@ public class MiLogger {
 
         PatternLayout layout = new PatternLayout(PATTERN_LAYOUT);
         appender.setMaxFileSize(maxFileSize);
-        appender.setName(INSIST_LOG_NAME);
+        appender.setName(MI_LOG_NAME);
         appender.setLayout(layout);
         appender.setAppend(true);
         appender.activateOptions();

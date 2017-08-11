@@ -113,8 +113,8 @@ public class MiZkClient implements IZkClient {
         MiLogger.getSysLogger().warn(this.getClass().getSimpleName() + "- connect await out ! "
                 + MiZkClient.class.getSimpleName() + " connect zk is success ! ");
 
-        createPersistent(MiConstants.INSIST_ZK_SLASH + MiConstants.INSIST_ROOT_PATH);
-        addExistsWatcher(MiConstants.INSIST_ZK_SLASH + MiConstants.INSIST_ROOT_PATH, ZkConnectionWatcher.getInstance());
+        createPersistent(MiConstants.MI_ZK_SLASH + MiConstants.MI_ROOT_PATH);
+        addExistsWatcher(MiConstants.MI_ZK_SLASH + MiConstants.MI_ROOT_PATH, ZkConnectionWatcher.getInstance());
     }
 
     @Override

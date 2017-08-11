@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class MiServiceStore {
 
-    private static String INSIST_SERVICE_STORE_LOCK = UUID.randomUUID().toString();
+    private static String MI_SERVICE_STORE_LOCK = UUID.randomUUID().toString();
 
     //manager all serviceName group version  service ip and port
     private static Map<String, InsistServiceList> serviceStore = new HashMap<String, InsistServiceList>();
@@ -28,7 +28,7 @@ public class MiServiceStore {
         String ipAndPort = MiUtil.ipAndPortCreateKey(serviceMeta);
         List<ServiceMeta> list = ipAndPortServiceMetaStore.get(ipAndPort);
         if (list == null) {
-            synchronized (INSIST_SERVICE_STORE_LOCK) {
+            synchronized (MI_SERVICE_STORE_LOCK) {
                 list = ipAndPortServiceMetaStore.get(ipAndPort);
                 if (list == null) {
                     list = new ArrayList<ServiceMeta>();

@@ -50,7 +50,7 @@ public class ZkChildrenWatcher implements Watcher {
         try {
             if(watchedEvent.getType().name().equals(Event.EventType.NodeChildrenChanged.name())
                     && StringUtil.isNotBlank(watchedEvent.getPath())){
-              String[] pathArr =  watchedEvent.getPath().split(MiConstants.INSIST_ZK_SLASH);
+              String[] pathArr =  watchedEvent.getPath().split(MiConstants.MI_ZK_SLASH);
               if(pathArr.length==7){
                    InsistPullProvider.pull(watchedEvent.getPath());
                }

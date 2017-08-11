@@ -4,17 +4,17 @@ package org.ahstu.mi.common;
  * Created by renyueliang on 17/5/16.
  */
 public class MiConstants {
-    public static final String INSIST_ROOT_PATH = "insist";
+    public static final String MI_ROOT_PATH = "insist";
     //
     public final static String LOWER_HORIZONTAL_LINE="_";
 
-     public final static String INSIST_ZK_SLASH="/";
+     public final static String MI_ZK_SLASH="/";
 
-     public final static String INSIST_ZK_PRODIVER="prodiver";
+     public final static String MI_ZK_PRODIVER="prodiver";
 
-     public final static String INSIST_ZK_CONSUMER ="consumer";
+     public final static String MI_ZK_CONSUMER ="consumer";
 
-     public final static String INSIST_ZK_FORSERVICE="forservice";
+     public final static String MI_ZK_FORSERVICE="forservice";
 
 
     //反序列化接收每次接收长度的大小

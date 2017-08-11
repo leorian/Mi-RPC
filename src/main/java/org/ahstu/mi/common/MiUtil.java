@@ -22,7 +22,7 @@ public class MiUtil {
 
     private static String ip = null;
     private static final ReentrantLock reentrantLock = new ReentrantLock();
-    private static volatile boolean INSIST_START_SUCCESS=false;
+    private static volatile boolean MI_START_SUCCESS=false;
 
     public static String ipAndPortCreateKey(ServiceMeta serviceMeta) {
         return ipAndPortCreateKey(serviceMeta.getIp(), serviceMeta.getPort());
@@ -101,13 +101,13 @@ public class MiUtil {
     }
 
     public static void insistStartUp() {
-        if(INSIST_START_SUCCESS){
+        if(MI_START_SUCCESS){
             return ;
         }
 
         try {
             reentrantLock.lock();
-            if(INSIST_START_SUCCESS){
+            if(MI_START_SUCCESS){
                 return ;
             }
             MiLogger.record(StringUtil.format("**************** insist start up ****************"));
@@ -135,7 +135,7 @@ public class MiUtil {
             if (!zkClient.has(consumerServicePath)) {
                 zkClient.addNode(consumerServicePath, false);
             }
-            INSIST_START_SUCCESS=true;
+            MI_START_SUCCESS=true;
             MiLogger.record(StringUtil.format("**************** insist end ****************"));
 
         } catch (Throwable e) {
@@ -159,31 +159,31 @@ public class MiUtil {
     }
 
     public static String getBaseProviderZkPath() {
-        return MiConstants.INSIST_ROOT_PATH + MiConstants.INSIST_ZK_SLASH +
-                MiConstants.INSIST_ZK_PRODIVER;
+        return MiConstants.MI_ROOT_PATH + MiConstants.MI_ZK_SLASH +
+                MiConstants.MI_ZK_PRODIVER;
     }
 
     public static String getBaseConsumerZkPath() {
-        return MiConstants.INSIST_ROOT_PATH
-                + MiConstants.INSIST_ZK_SLASH + MiConstants.INSIST_ZK_CONSUMER;
+        return MiConstants.MI_ROOT_PATH
+                + MiConstants.MI_ZK_SLASH + MiConstants.MI_ZK_CONSUMER;
 
     }
 
     public static String getProviderZkPath() {
-        return getBaseProviderZkPath() + MiConstants.INSIST_ZK_SLASH +
-                MiConstants.INSIST_ZK_FORSERVICE;
+        return getBaseProviderZkPath() + MiConstants.MI_ZK_SLASH +
+                MiConstants.MI_ZK_FORSERVICE;
     }
 
     public static String getConsumerZkPath() {
         return getBaseConsumerZkPath()
-                + MiConstants.INSIST_ZK_SLASH +
-                MiConstants.INSIST_ZK_FORSERVICE;
+                + MiConstants.MI_ZK_SLASH +
+                MiConstants.MI_ZK_FORSERVICE;
 
     }
 
     public static String getServiceNameGroupVersionZkPath(String serviceName, String group, String version) {
-        return getProviderZkPath() + MiConstants.INSIST_ZK_SLASH + group + MiConstants.INSIST_ZK_SLASH +
-                serviceName + MiConstants.INSIST_ZK_SLASH + version;
+        return getProviderZkPath() + MiConstants.MI_ZK_SLASH + group + MiConstants.MI_ZK_SLASH +
+                serviceName + MiConstants.MI_ZK_SLASH + version;
     }
 
     public static ServiceMeta jsonToServiceMeta(String json) {
@@ -218,7 +218,7 @@ public class MiUtil {
      * @return
      */
     public static String firstAddChar(String path) {
-        return firstAddChar(path, MiConstants.INSIST_ZK_SLASH);
+        return firstAddChar(path, MiConstants.MI_ZK_SLASH);
     }
 
     /**
@@ -238,9 +238,9 @@ public class MiUtil {
 
     public static void createAllProviderPathNode(String serviceName, String group, String version) {
         IZkClient zkClient = MiZkClient.getInstance();
-        String groupPath = MiUtil.getProviderZkPath() + MiConstants.INSIST_ZK_SLASH + group;
-        String serviceGroupPath = groupPath + MiConstants.INSIST_ZK_SLASH + serviceName;
-        String versionServiceGroupPath = serviceGroupPath + MiConstants.INSIST_ZK_SLASH + version;
+        String groupPath = MiUtil.getProviderZkPath() + MiConstants.MI_ZK_SLASH + group;
+        String serviceGroupPath = groupPath + MiConstants.MI_ZK_SLASH + serviceName;
+        String versionServiceGroupPath = serviceGroupPath + MiConstants.MI_ZK_SLASH + version;
         try {
 
             if (!zkClient.has(groupPath)) {

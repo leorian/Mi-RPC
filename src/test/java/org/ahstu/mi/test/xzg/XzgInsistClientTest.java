@@ -61,7 +61,7 @@ public class XzgInsistClientTest {
         map1.put(xzgUser1, xzgUser1);
         Map<XzgUser, XzgUser> hello1 = JSON.parseObject(JSON.toJSONString(map1), Map.class);
 
-        System.out.println(MiZkClient.getInstance().getTreeForList(MiConstants.INSIST_ROOT_PATH));
+        System.out.println(MiZkClient.getInstance().getTreeForList(MiConstants.MI_ROOT_PATH));
 
         System.in.read();
 

@@ -77,7 +77,7 @@ public class InsistPullProvider  {
         try {
             List<String> list = MiZkClient.getInstance().getNodeChildren(path);
 
-            String[] pathArr = path.split(MiConstants.INSIST_ZK_SLASH);
+            String[] pathArr = path.split(MiConstants.MI_ZK_SLASH);
 
             String group =pathArr[pathArr.length-3];
             String serviceName = pathArr[pathArr.length-2];
@@ -94,9 +94,9 @@ public class InsistPullProvider  {
             }else {
 
                 for (String ipAndPort : list) {
-                    String json = MiZkClient.getInstance().getDataForStr(path + MiConstants.INSIST_ZK_SLASH + ipAndPort, -1);
+                    String json = MiZkClient.getInstance().getDataForStr(path + MiConstants.MI_ZK_SLASH + ipAndPort, -1);
                     if (StringUtil.isBlank(json)) {
-                        MiLogger.record(StringUtil.format("InsistPullProvider.pull path:%s json is null", path + MiConstants.INSIST_ZK_SLASH + ipAndPort));
+                        MiLogger.record(StringUtil.format("InsistPullProvider.pull path:%s json is null", path + MiConstants.MI_ZK_SLASH + ipAndPort));
                         continue;
                     }
                     ServiceMeta serviceMeta = MiUtil.jsonToServiceMeta(json);

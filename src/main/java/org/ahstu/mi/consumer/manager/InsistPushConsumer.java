@@ -26,10 +26,10 @@ public class InsistPushConsumer {
         //--/insist/consumer/forservice/group/com.xxx.service/version/ip
         //--/insist/prodiver/forservice/group/com.xxx.service/version/ip
 
-        String groupPath = MiUtil.getConsumerZkPath()+ MiConstants.INSIST_ZK_SLASH+clientMeta.getGroup();
-        String serviceGroupPath =groupPath+ MiConstants.INSIST_ZK_SLASH+clientMeta.getInterfaceName();
-        String versionServiceGroupPath = serviceGroupPath+ MiConstants.INSIST_ZK_SLASH+clientMeta.getVersion();
-        String versionServiceGroupPathAndIpPort=versionServiceGroupPath+ MiConstants.INSIST_ZK_SLASH
+        String groupPath = MiUtil.getConsumerZkPath()+ MiConstants.MI_ZK_SLASH+clientMeta.getGroup();
+        String serviceGroupPath =groupPath+ MiConstants.MI_ZK_SLASH+clientMeta.getInterfaceName();
+        String versionServiceGroupPath = serviceGroupPath+ MiConstants.MI_ZK_SLASH+clientMeta.getVersion();
+        String versionServiceGroupPathAndIpPort=versionServiceGroupPath+ MiConstants.MI_ZK_SLASH
                 +clientMeta.getIp()
                 + MiConstants.LOWER_HORIZONTAL_LINE
                 +clientMeta.getPort();
