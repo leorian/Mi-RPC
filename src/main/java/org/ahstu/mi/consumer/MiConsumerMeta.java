@@ -127,7 +127,7 @@ public class MiConsumerMeta extends Meta implements Serializable{
                 StringUtil.isBlank(version) ||
                 StringUtil.isBlank(group)  ||
                 StringUtil.isBlank(interfaceName) ){
-            throw new MiException(MiError.INSIST_ILLEGAL_ARGUMENT);
+            throw new MiException(MiError.MI_ILLEGAL_ARGUMENT);
         }
 
         if(clientTimeout==0){

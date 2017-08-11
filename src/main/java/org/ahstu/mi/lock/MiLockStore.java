@@ -18,11 +18,11 @@ public class MiLockStore {
       if(insistLock==null || insistLock.getLockId()==null || insistLock.getLockId().isEmpty()
              ){
 
-          throw new MiException(MiError.INSIST_ADDLOCK_ISNULL);
+          throw new MiException(MiError.MI_ADDLOCK_ISNULL);
       }
 
       if(insistLockStore.get(insistLock.getLockId())!=null){
-          throw new MiException(MiError.INSIST_ADDLOCK_EXIST);
+          throw new MiException(MiError.MI_ADDLOCK_EXIST);
       }
 
       insistLockStore.put(insistLock.getLockId(),insistLock);

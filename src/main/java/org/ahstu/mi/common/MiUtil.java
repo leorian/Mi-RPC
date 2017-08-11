@@ -44,13 +44,13 @@ public class MiUtil {
     public static ServiceMeta getByIpPortKey(String ipPortKey) {
 
         if (StringUtil.isBlank(ipPortKey)) {
-            throw new MiException(MiError.INSIST_IPPORTKEY_ISNULL);
+            throw new MiException(MiError.MI_IPPORTKEY_ISNULL);
         }
 
         String[] arr = ipPortKey.split(MiConstants.LOWER_HORIZONTAL_LINE);
 
         if (arr.length < 2) {
-            throw new MiException(MiError.INSIST_IPPORTKEY_ISNULL);
+            throw new MiException(MiError.MI_IPPORTKEY_ISNULL);
         }
 
         ServiceMeta serviceMeta = new ServiceMeta();
@@ -140,7 +140,7 @@ public class MiUtil {
 
         } catch (Throwable e) {
             MiLogger.record("MiZkClient start up error ! errorCode:"+e.getMessage(), e);
-            if(e.getMessage().equals(MiError.INSIST_ZK_HOST_ISNULL.getErrorCode())){
+            if(e.getMessage().equals(MiError.MI_ZK_HOST_ISNULL.getErrorCode())){
                 try {
                     Thread.sleep(3000l);
                     insistStartUp();

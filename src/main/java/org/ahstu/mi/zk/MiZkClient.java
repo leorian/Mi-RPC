@@ -85,7 +85,7 @@ public class MiZkClient implements IZkClient {
     @Override
     public void connect(String zkHosts) throws IOException, InterruptedException, KeeperException {
         if (StringUtil.isBlank(zkHosts)) {
-            throw new MiException(MiError.INSIST_ZK_HOST_ISNULL);
+            throw new MiException(MiError.MI_ZK_HOST_ISNULL);
         }
 
         MiLogger.record("********** MiZkClient.connect start zkHosts:" + zkHosts + " *****************");

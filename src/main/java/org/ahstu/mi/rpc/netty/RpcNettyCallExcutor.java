@@ -58,7 +58,7 @@ public class RpcNettyCallExcutor implements RpcCallExcutor {
             }
             MiResult insistResult = MiResultStore.getAndRemove(insistSendDTO.getRequestId());
             if (insistResult == null) {
-                recordLog(insistSendDTO, MiError.INSIST_RESULT_IS_NULL,null);
+                recordLog(insistSendDTO, MiError.MI_RESULT_IS_NULL,null);
                 throw new MiException(MiError.CLIENT_TIME_OUT);
             }
             return insistResult;
