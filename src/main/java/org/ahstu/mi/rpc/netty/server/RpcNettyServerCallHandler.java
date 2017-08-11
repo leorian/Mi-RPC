@@ -5,13 +5,13 @@ import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiResult;
 import org.ahstu.mi.common.MiSendDTO;
 import org.ahstu.mi.provider.MiServiceDynamicCall;
-import org.ahstu.mi.rpc.netty.InsistChannelHandlerAdapter;
+import org.ahstu.mi.rpc.netty.MiChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
 /**
  * Created by renyueliang on 17/5/18.
  */
-public class RpcNettyServerCallHandler extends InsistChannelHandlerAdapter {
+public class RpcNettyServerCallHandler extends MiChannelHandlerAdapter {
 
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {

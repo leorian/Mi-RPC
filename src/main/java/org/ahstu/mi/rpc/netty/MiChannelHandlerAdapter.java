@@ -10,10 +10,10 @@ import java.util.Map;
 /**
  * Created by xiezg@317hu.com on 2017/7/14 0014.
  */
-public abstract class InsistChannelHandlerAdapter  extends ChannelInboundHandlerAdapter {
+public abstract class MiChannelHandlerAdapter extends ChannelInboundHandlerAdapter {
     boolean added;
 
-    public InsistChannelHandlerAdapter() {
+    public MiChannelHandlerAdapter() {
     }
 
     public boolean isSharable() {

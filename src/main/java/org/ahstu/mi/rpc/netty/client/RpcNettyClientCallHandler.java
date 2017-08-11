@@ -8,7 +8,7 @@ import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.manager.MiResultStore;
 import org.ahstu.mi.lock.MiLock;
 import org.ahstu.mi.lock.MiLockStore;
-import org.ahstu.mi.rpc.netty.InsistChannelHandlerAdapter;
+import org.ahstu.mi.rpc.netty.MiChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
 import java.net.InetSocketAddress;
@@ -16,7 +16,7 @@ import java.net.InetSocketAddress;
 /**
  * Created by renyueliang on 17/5/17.
  */
-public class RpcNettyClientCallHandler extends InsistChannelHandlerAdapter {
+public class RpcNettyClientCallHandler extends MiChannelHandlerAdapter {
 
 
 
