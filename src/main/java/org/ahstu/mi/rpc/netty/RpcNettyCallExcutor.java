@@ -4,7 +4,7 @@ import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.consumer.manager.MiResultStore;
 import org.ahstu.mi.lock.MiLock;
-import org.ahstu.mi.lock.InsistLockStore;
+import org.ahstu.mi.lock.MiLockStore;
 import org.ahstu.mi.rpc.RpcCallExcutor;
 import org.ahstu.mi.rpc.netty.client.NettyClient;
 
@@ -45,7 +45,7 @@ public class RpcNettyCallExcutor implements RpcCallExcutor {
             try {
                 final NettyClient nettyClient = NettyClient.getInstance();
                 MiLock insistLock = new MiLock(insistSendDTO.getRequestId());
-                InsistLockStore.add(insistLock);
+                MiLockStore.add(insistLock);
                 synchronized (insistLock) {
                     nettyClient.send(insistSendDTO);
                     insistLock.lock(insistSendDTO.getClientTimeout());
@@ -54,7 +54,7 @@ public class RpcNettyCallExcutor implements RpcCallExcutor {
                 recordLog(insistSendDTO,null,e);
                 throw new MiException(e.getMessage(),e);
             } finally {
-                InsistLockStore.del(insistSendDTO.getRequestId());
+                MiLockStore.del(insistSendDTO.getRequestId());
             }
             MiResult insistResult = MiResultStore.getAndRemove(insistSendDTO.getRequestId());
             if (insistResult == null) {

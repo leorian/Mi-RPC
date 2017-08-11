@@ -3,7 +3,7 @@ package org.ahstu.mi.provider;
 import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.provider.factory.ProviderFactory;
-import org.ahstu.mi.provider.manager.InsistPushProvider;
+import org.ahstu.mi.provider.manager.MiPushProvider;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -88,6 +88,6 @@ public class InsistSpringProviderBean implements InitializingBean, ApplicationLi
 
     public void onApplicationEvent(ContextRefreshedEvent event) {
         //call zk serviceMetas
-        InsistPushProvider.push(this.serviceMeta);
+        MiPushProvider.push(this.serviceMeta);
     }
 }

@@ -5,7 +5,7 @@ import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.common.*;
 import org.ahstu.mi.consumer.manager.InsistPullProvider;
 import org.ahstu.mi.consumer.manager.InsistPushConsumer;
-import org.ahstu.mi.provider.manager.InsistPushProvider;
+import org.ahstu.mi.provider.manager.MiPushProvider;
 import org.ahstu.mi.zk.api.IZkClient;
 import org.ahstu.mi.zk.api.WatcherType;
 import org.apache.zookeeper.*;
@@ -78,7 +78,7 @@ public class InsistZkClient implements IZkClient {
     public void reconnect() throws IOException, InterruptedException, KeeperException {
         connect();
         InsistPullProvider.pullAll();
-        InsistPushProvider.pushAll();
+        MiPushProvider.pushAll();
         InsistPushConsumer.pushAll();
     }
 

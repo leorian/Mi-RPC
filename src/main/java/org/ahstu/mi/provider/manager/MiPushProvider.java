@@ -16,11 +16,11 @@ import org.ahstu.mi.zk.api.IZkClient;
 /**
  * Created by renyueliang on 17/5/22.
  */
-public class InsistPushProvider {
+public class MiPushProvider {
 
     public static void push(ServiceMeta serviceMeta){
 
-        MiLogger.record(StringUtil.format("InsistPushProvider.push start ! json:"+ JSON.toJSONString(serviceMeta)));
+        MiLogger.record(StringUtil.format("MiPushProvider.push start ! json:"+ JSON.toJSONString(serviceMeta)));
 
         IZkClient zkClient =  InsistZkClient.getInstance();
 

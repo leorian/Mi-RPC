@@ -2,7 +2,7 @@ package org.ahstu.mi.rpc.netty.client;
 
 import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.lock.MiLock;
-import org.ahstu.mi.lock.InsistLockStore;
+import org.ahstu.mi.lock.MiLockStore;
 import org.ahstu.mi.serialize.InsistFstDecoder;
 import org.ahstu.mi.serialize.InsistFstEncoder;
 import io.netty.bootstrap.Bootstrap;
@@ -96,7 +96,7 @@ public class NettyClient {
                 chc = NettyChannelHandlerStore.get(chcKey);
                 if (chc == null) {
                     final MiLock insistLock = new MiLock(chcKey);
-                    InsistLockStore.add(insistLock);
+                    MiLockStore.add(insistLock);
                     synchronized (insistLock) {
                         try {
                             MiLogger.record(StringUtil.format("NettyClient.getChc ip:%s port:%s connect start !",
@@ -116,7 +116,7 @@ public class NettyClient {
                         } catch (Throwable e) {
                             throw new MiException(MiError.CONNECTION_INTERRUPT, e);
                         }finally {
-                            InsistLockStore.del(chcKey);
+                            MiLockStore.del(chcKey);
                         }
                     }
                 }

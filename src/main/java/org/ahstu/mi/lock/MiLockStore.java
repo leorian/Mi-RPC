@@ -9,7 +9,7 @@ import java.util.Map;
 /**
  * Created by renyueliang on 17/5/15.
  */
-public class InsistLockStore {
+public class MiLockStore {
 
   private static Map<String,MiLock>  insistLockStore =new HashMap<String, MiLock>();
 

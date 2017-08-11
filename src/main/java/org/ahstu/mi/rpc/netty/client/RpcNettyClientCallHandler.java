@@ -7,7 +7,7 @@ import org.ahstu.mi.common.MiResult;
 import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.manager.MiResultStore;
 import org.ahstu.mi.lock.MiLock;
-import org.ahstu.mi.lock.InsistLockStore;
+import org.ahstu.mi.lock.MiLockStore;
 import org.ahstu.mi.rpc.netty.InsistChannelHandlerAdapter;
 import io.netty.channel.ChannelHandlerContext;
 
@@ -30,7 +30,7 @@ public class RpcNettyClientCallHandler extends InsistChannelHandlerAdapter {
         String ipAndPortKey = MiUtil.ipAndPortCreateKey(remoteIp.equals("localhost") ? "127.0.0.1" : remoteIp,port);
 
         NettyChannelHandlerStore.add(ipAndPortKey, ctx);
-        MiLock insistLock = InsistLockStore.get(ipAndPortKey);
+        MiLock insistLock = MiLockStore.get(ipAndPortKey);
         if(insistLock!=null){
             synchronized (insistLock) {
                 insistLock.unlock();
@@ -44,7 +44,7 @@ public class RpcNettyClientCallHandler extends InsistChannelHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
         MiResult result = (MiResult)msg;
         MiResultStore.add(result);
-        MiLock insistLock = InsistLockStore.get(result.getRequestId());
+        MiLock insistLock = MiLockStore.get(result.getRequestId());
         if(insistLock!=null){
             synchronized (insistLock) {
                 insistLock.unlock();
@@ -66,7 +66,7 @@ public class RpcNettyClientCallHandler extends InsistChannelHandlerAdapter {
 
         NettyChannelHandlerStore.remove(ipAndPortKey);
 
-        MiLock insistLock = InsistLockStore.get(ipAndPortKey);
+        MiLock insistLock = MiLockStore.get(ipAndPortKey);
 
         if(insistLock!=null){
             insistLock.unlock();
