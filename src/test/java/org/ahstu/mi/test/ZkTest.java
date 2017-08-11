@@ -1,6 +1,6 @@
 package org.ahstu.mi.test;
 
-import org.ahstu.mi.common.InsistUtil;
+import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.zk.InsistZkClient;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class ZkTest {
         }
         System.out.println("************** service end ********************");
 
-        List<String> consumerList = InsistZkClient.getInstance().getTreeForList(InsistUtil.getConsumerZkPath()) ;
+        List<String> consumerList = InsistZkClient.getInstance().getTreeForList(MiUtil.getConsumerZkPath()) ;
         System.out.println("************** consumerList start********************");
         for(String consumer : consumerList){
             if(consumer.split("/").length<7){
