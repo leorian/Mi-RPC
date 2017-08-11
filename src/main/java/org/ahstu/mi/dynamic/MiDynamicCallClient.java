@@ -54,7 +54,7 @@ public class MiDynamicCallClient {
                     throw new MiException(MiError.NOT_FIND_SERVICE);
                 }
 
-                sendDTO = createInsistSendDTO(requestId,
+                sendDTO = createMiSendDTO(requestId,
                         MiDynamicCallService.class.getMethod(methodName, MiDynamicDTO.class),
                         new Object[]{this.miDynamicDTO}, serviceMeta.getIp(), serviceMeta.getPort());
                 result = RemoteExcutorFactory.getRpcExcutor().remoteCall(sendDTO);
@@ -113,7 +113,7 @@ public class MiDynamicCallClient {
         return result;
     }
 
-    private MiSendDTO createInsistSendDTO(String requestId, Method method, Object[] args, String ip, int port) {
+    private MiSendDTO createMiSendDTO(String requestId, Method method, Object[] args, String ip, int port) {
         return new MiSendDTO(
                 requestId,
                 MiDynamicCallService.class.getName(),

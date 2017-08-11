@@ -10,7 +10,7 @@
 
     <bean id="courseCenter" class="org.ahstu.mi.test.service.impl.CourseCenterServiceImpl"/>
 
-    <mi:provider id="userServiceInsist"
+    <mi:provider id="userServiceMi"
                      interface="org.ahstu.mi.test.service.UserService"
                      version="1.0.0.daily"
                      group="user"
@@ -18,7 +18,7 @@
                      serviceDesc="user center interface"/>
 
 
-    <mi:provider id="courseCenterInsist" interface="org.ahstu.mi.test.service.CourseCenterService"
+    <mi:provider id="courseCenterMi" interface="org.ahstu.mi.test.service.CourseCenterService"
                      version="1.0.0.daily" group="course" ref="courseCenter"
                      serviceDesc="course center interface"/>
 

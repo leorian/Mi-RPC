@@ -36,15 +36,15 @@ public class MiDynamicCallServiceProviderRegister implements BeanFactoryPostProc
                     rootBeanDefinition(MiDynamicCallServiceImpl.class.getName());
             beanFactory.registerBeanDefinition("miDynamicCallService",
                     miDynamicCallServiceBuilder.getBeanDefinition());
-            BeanDefinitionBuilder InsistDynamicCallServiceProviderRegisterBuilder = BeanDefinitionBuilder.
+            BeanDefinitionBuilder MiDynamicCallServiceProviderRegisterBuilder = BeanDefinitionBuilder.
                     rootBeanDefinition(MiSpringProviderBean.class.getName());
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("group", MiDynamicCallConstants.GROUP);
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("version", MiDynamicCallConstants.VERSION);
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("interfaceName", MiDynamicCallService.class.getName());
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("id", "miDynamicCallServiceProviderRegister");
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyReference("target", "miDynamicCallService");
+            MiDynamicCallServiceProviderRegisterBuilder.addPropertyValue("group", MiDynamicCallConstants.GROUP);
+            MiDynamicCallServiceProviderRegisterBuilder.addPropertyValue("version", MiDynamicCallConstants.VERSION);
+            MiDynamicCallServiceProviderRegisterBuilder.addPropertyValue("interfaceName", MiDynamicCallService.class.getName());
+            MiDynamicCallServiceProviderRegisterBuilder.addPropertyValue("id", "miDynamicCallServiceProviderRegister");
+            MiDynamicCallServiceProviderRegisterBuilder.addPropertyReference("target", "miDynamicCallService");
             beanFactory.registerBeanDefinition("miDynamicCallServiceProviderRegister",
-                    InsistDynamicCallServiceProviderRegisterBuilder.getBeanDefinition());
+                    MiDynamicCallServiceProviderRegisterBuilder.getBeanDefinition());
             System.out.println("XXXXXXXXXX");
             MI_START_SUCCESS = true;
         } catch (Throwable throwable) {

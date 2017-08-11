@@ -387,8 +387,8 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
             MiServiceMethodDO miServiceMethodDO = new MiServiceMethodDO();
             miServiceMethodDO.setReturnType(method.getReturnType().getName());
             miServiceMethodDO.setSimpleMethodName(method.getName());
-            if (miServiceMethodDO.getInsistServiceMethodParameterDOList() == null) {
-                miServiceMethodDO.setInsistServiceMethodParameterDOList(new ArrayList<MiServiceMethodParameterDO>());
+            if (miServiceMethodDO.getMiServiceMethodParameterDOList() == null) {
+                miServiceMethodDO.setMiServiceMethodParameterDOList(new ArrayList<MiServiceMethodParameterDO>());
             }
 
             String methodName = method.getReturnType().getName() + " " + method.getName() + "(";
@@ -517,7 +517,7 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
                     miServiceMethodParameterDO.setParameterHtmlDomType(ParameterHtmlDomType.TEXTAREA);
                 }
 
-                miServiceMethodDO.getInsistServiceMethodParameterDOList().add(miServiceMethodParameterDO);
+                miServiceMethodDO.getMiServiceMethodParameterDOList().add(miServiceMethodParameterDO);
                 i++;
             }
             methodName += ")";

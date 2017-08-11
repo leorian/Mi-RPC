@@ -52,11 +52,11 @@ public class MiServiceMethodDO implements Serializable {
         this.returnType = returnType;
     }
 
-    public List<MiServiceMethodParameterDO> getInsistServiceMethodParameterDOList() {
+    public List<MiServiceMethodParameterDO> getMiServiceMethodParameterDOList() {
         return miServiceMethodParameterDOList;
     }
 
-    public void setInsistServiceMethodParameterDOList(List<MiServiceMethodParameterDO> miServiceMethodParameterDOList) {
+    public void setMiServiceMethodParameterDOList(List<MiServiceMethodParameterDO> miServiceMethodParameterDOList) {
         this.miServiceMethodParameterDOList = miServiceMethodParameterDOList;
     }
 }

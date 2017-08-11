@@ -57,7 +57,7 @@ public class MiConsumerHandler implements InvocationHandler {
                 if (this.serviceMeta == null) {
                     throw new MiException(MiError.NOT_FIND_SERVICE);
                 }
-                sendDTO = createInsistSendDTO(requestId, method, args);
+                sendDTO = createMiSendDTO(requestId, method, args);
                 result = RemoteExcutorFactory.getRpcExcutor().remoteCall(sendDTO);
                 callSuccess=true;
             } catch (MiException ie) {
@@ -118,7 +118,7 @@ public class MiConsumerHandler implements InvocationHandler {
     }
 
 
-    private MiSendDTO createInsistSendDTO(String requestId, Method method, Object[] args){
+    private MiSendDTO createMiSendDTO(String requestId, Method method, Object[] args){
         return new MiSendDTO(
                 requestId,
                 serviceMeta.getInterfaceName(),

@@ -22,7 +22,7 @@
     />
 
     <mi:consumer id="miDynamicCallServiceClient"
-                     interface="org.ahstu.mi.dynamic.InsistDynamicCallService"
+                     interface="org.ahstu.mi.dynamic.MiDynamicCallService"
                      version="1.0.0.daily" group="trade"/>
 
 </beans>

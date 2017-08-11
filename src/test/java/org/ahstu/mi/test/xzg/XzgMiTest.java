@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**
  * Created by renyueliang on 17/5/23.
  */
-public class XzgInsistTest {
+public class XzgMiTest {
 
    static ApplicationContext factory;
 

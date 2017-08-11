@@ -93,7 +93,7 @@ public class MiLogger {
             scheduler.scheduleAtFixedRate(new Runnable() {
                 @Override
                 public void run() {
-                    getSysLogger().warn(" InsistLogger start !");
+                    getSysLogger().warn(" MiLogger start !");
 
                     try {
                        MiRollingFileAppender appender = (MiRollingFileAppender) logger.getAppender(MI_LOG_NAME);

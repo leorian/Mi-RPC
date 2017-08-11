@@ -252,9 +252,9 @@ public class MiUtil {
             if (!zkClient.has(versionServiceGroupPath)) {
                 zkClient.addNode(versionServiceGroupPath, false);
             }
-            MiLogger.record(StringUtil.format("InsistUtil.createAllProviderPathNode success ! path:%s ", versionServiceGroupPath));
+            MiLogger.record(StringUtil.format("MiUtil.createAllProviderPathNode success ! path:%s ", versionServiceGroupPath));
         } catch (Throwable e) {
-            MiLogger.record(StringUtil.format("InsistUtil.createAllProviderPathNode error ! versionServiceGroupPath:%s errorCode:%s"
+            MiLogger.record(StringUtil.format("MiUtil.createAllProviderPathNode error ! versionServiceGroupPath:%s errorCode:%s"
                     , versionServiceGroupPath,
                     e.getMessage()
             ), e);

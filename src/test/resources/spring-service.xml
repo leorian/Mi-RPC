@@ -10,24 +10,24 @@
 
         <bean id="tradeService" class="org.ahstu.mi.test.service.impl.TradeServiceImpl"/>
 
-        <!--<bean id="miDynamicCallService" class="com.bozhong.mi.dynamic.InsistDynamicCallServiceImpl"/>-->
+        <!--<bean id="miDynamicCallService" class="com.bozhong.mi.dynamic.MiDynamicCallServiceImpl"/>-->
 
         <!--<bean class="com.bozhong.mi.dynamic.MiDynamicCallServiceProviderRegister"/>-->
 
-        <mi:provider id="userServiceInsist"
+        <mi:provider id="userServiceMi"
                          interface="org.ahstu.mi.test.service.UserService"
                          version="1.0.0.daily"
                          group="user"
                          ref="userService"/>
 
-        <mi:provider id="tradeServiceInsist"
+        <mi:provider id="tradeServiceMi"
                          interface="org.ahstu.mi.test.service.TradeService"
                          version="1.0.0.daily"
                          group="trade"
                          ref="tradeService"/>
 
-        <!--<mi:provider id="miDynamicCallServiceInsist"-->
-                         <!--interface="com.bozhong.mi.dynamic.InsistDynamicCallService"-->
+        <!--<mi:provider id="miDynamicCallServiceMi"-->
+                         <!--interface="com.bozhong.mi.dynamic.MiDynamicCallService"-->
                          <!--version="1.0.0.daily" group="trade" ref="miDynamicCallService"/>-->
 
 

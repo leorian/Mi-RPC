@@ -11,7 +11,7 @@ import java.util.*;
 /**
  * Created by renyueliang on 17/5/23.
  */
-public class XzgInsistClientTest {
+public class XzgMiClientTest {
 
     static ApplicationContext factory;
 
