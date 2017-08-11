@@ -12,7 +12,7 @@ import java.util.UUID;
 /**
  * Created by renyueliang on 17/5/23.
  */
-public class InsistClientTest {
+public class MiClientTest {
 
     static ApplicationContext factory;
 

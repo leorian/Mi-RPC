@@ -7,7 +7,7 @@ import java.util.UUID;
 /**
  * Created by renyueliang on 17/5/23.
  */
-public class InsistLockTest {
+public class MiLockTest {
 
     public static void main(String[] args) throws Throwable{
 
