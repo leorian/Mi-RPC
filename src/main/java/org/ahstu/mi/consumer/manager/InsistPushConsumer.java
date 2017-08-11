@@ -8,7 +8,7 @@ import org.ahstu.mi.common.MiLogger;
 import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.consumer.MiConsumerStore;
-import org.ahstu.mi.zk.InsistZkClient;
+import org.ahstu.mi.zk.MiZkClient;
 import org.ahstu.mi.zk.api.IZkClient;
 
 /**
@@ -21,7 +21,7 @@ public class InsistPushConsumer {
 
         MiLogger.record(StringUtil.format("InsistPushConsumer.push start ! json:"+ JSON.toJSONString(clientMeta)));
 
-        IZkClient zkClient =  InsistZkClient.getInstance();
+        IZkClient zkClient =  MiZkClient.getInstance();
 
         //--/insist/consumer/forservice/group/com.xxx.service/version/ip
         //--/insist/prodiver/forservice/group/com.xxx.service/version/ip

@@ -5,7 +5,7 @@ import com.bozhong.common.util.StringUtil;
 import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.rpc.netty.server.NettyServer;
-import org.ahstu.mi.zk.InsistZkClient;
+import org.ahstu.mi.zk.MiZkClient;
 import org.ahstu.mi.zk.api.IZkClient;
 
 import java.net.InetAddress;
@@ -115,7 +115,7 @@ public class MiUtil {
             //--/insist/consumer/forservice/group/com.xxx.service/version/ip
             //--/insist/prodiver/forservice/group/com.xxx.service/version/ip
 
-            IZkClient zkClient = InsistZkClient.getInstance();
+            IZkClient zkClient = MiZkClient.getInstance();
             zkClient.connect();
 
             String providerPath = getBaseProviderZkPath();
@@ -139,13 +139,13 @@ public class MiUtil {
             MiLogger.record(StringUtil.format("**************** insist end ****************"));
 
         } catch (Throwable e) {
-            MiLogger.record("InsistZkClient start up error ! errorCode:"+e.getMessage(), e);
+            MiLogger.record("MiZkClient start up error ! errorCode:"+e.getMessage(), e);
             if(e.getMessage().equals(MiError.INSIST_ZK_HOST_ISNULL.getErrorCode())){
                 try {
                     Thread.sleep(3000l);
                     insistStartUp();
                 }catch (Throwable e1){
-                    MiLogger.record("waiting 3s InsistZkClient restart up error ! errorCode:"+e1.getMessage(), e1);
+                    MiLogger.record("waiting 3s MiZkClient restart up error ! errorCode:"+e1.getMessage(), e1);
                 }
             }else{
                 throw new MiException(e.getMessage(), e);
@@ -237,7 +237,7 @@ public class MiUtil {
 
 
     public static void createAllProviderPathNode(String serviceName, String group, String version) {
-        IZkClient zkClient = InsistZkClient.getInstance();
+        IZkClient zkClient = MiZkClient.getInstance();
         String groupPath = MiUtil.getProviderZkPath() + MiConstants.INSIST_ZK_SLASH + group;
         String serviceGroupPath = groupPath + MiConstants.INSIST_ZK_SLASH + serviceName;
         String versionServiceGroupPath = serviceGroupPath + MiConstants.INSIST_ZK_SLASH + version;

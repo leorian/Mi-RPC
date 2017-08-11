@@ -57,7 +57,7 @@ public class ZkConnectionWatcher implements Watcher {
                     if (connectSuccess) {
                         return;
                     }
-                    InsistZkClient.getInstance().reconnect();
+                    MiZkClient.getInstance().reconnect();
                     connectSuccess = true;
                 }
                 MiLogger.record("ZkConnectionWatcher.process Disconnected reconnect success !");
@@ -68,7 +68,7 @@ public class ZkConnectionWatcher implements Watcher {
             }
         } else if (Event.KeeperState.Expired.name().equals(watchedEvent.getState().name())) {
             try {
-                InsistZkClient.getInstance().reconnect();
+                MiZkClient.getInstance().reconnect();
                 MiLogger.record("ZkConnectionWatcher.process Expired reconnect success !");
             } catch (Throwable e) {
                 MiLogger.getSysLogger().error(e.getMessage(), e);

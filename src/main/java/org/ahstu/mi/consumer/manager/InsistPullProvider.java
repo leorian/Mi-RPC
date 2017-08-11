@@ -7,7 +7,7 @@ import org.ahstu.mi.common.MiUtil;
 import org.ahstu.mi.consumer.MiConsumerMeta;
 import org.ahstu.mi.consumer.MiConsumerStore;
 import org.ahstu.mi.module.ServiceMeta;
-import org.ahstu.mi.zk.InsistZkClient;
+import org.ahstu.mi.zk.MiZkClient;
 import org.ahstu.mi.zk.ZkChildrenWatcher;
 
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class InsistPullProvider  {
             return ;
         }
         try {
-            List<String> list = InsistZkClient.getInstance().getNodeChildren(path);
+            List<String> list = MiZkClient.getInstance().getNodeChildren(path);
 
             String[] pathArr = path.split(MiConstants.INSIST_ZK_SLASH);
 
@@ -94,7 +94,7 @@ public class InsistPullProvider  {
             }else {
 
                 for (String ipAndPort : list) {
-                    String json = InsistZkClient.getInstance().getDataForStr(path + MiConstants.INSIST_ZK_SLASH + ipAndPort, -1);
+                    String json = MiZkClient.getInstance().getDataForStr(path + MiConstants.INSIST_ZK_SLASH + ipAndPort, -1);
                     if (StringUtil.isBlank(json)) {
                         MiLogger.record(StringUtil.format("InsistPullProvider.pull path:%s json is null", path + MiConstants.INSIST_ZK_SLASH + ipAndPort));
                         continue;
@@ -121,7 +121,7 @@ public class InsistPullProvider  {
                 MiLogger.record(StringUtil.format("************* InsistPullProvider.pull removePath sucucess ! path:%s ****************",path));
                 //addChildWatcher
                 MiLogger.record(StringUtil.format("************* InsistPullProvider.pull addChildWatcher start ! path:%s ****************",path));
-                InsistZkClient.getInstance().addChildWatcher(path, ZkChildrenWatcher.getInstance());
+                MiZkClient.getInstance().addChildWatcher(path, ZkChildrenWatcher.getInstance());
                 MiLogger.record(StringUtil.format("************* InsistPullProvider.pull addChildWatcher success ! path:%s ****************",path));
             }catch (Throwable e1){
                 MiLogger.record("InsistPullProvider.pull path:"+path+" errorCode:"+e1.getMessage(),e1);

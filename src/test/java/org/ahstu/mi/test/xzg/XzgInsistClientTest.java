@@ -2,7 +2,7 @@ package org.ahstu.mi.test.xzg;
 
 import com.alibaba.fastjson.JSON;
 import org.ahstu.mi.common.MiConstants;
-import org.ahstu.mi.zk.InsistZkClient;
+import org.ahstu.mi.zk.MiZkClient;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -61,7 +61,7 @@ public class XzgInsistClientTest {
         map1.put(xzgUser1, xzgUser1);
         Map<XzgUser, XzgUser> hello1 = JSON.parseObject(JSON.toJSONString(map1), Map.class);
 
-        System.out.println(InsistZkClient.getInstance().getTreeForList(MiConstants.INSIST_ROOT_PATH));
+        System.out.println(MiZkClient.getInstance().getTreeForList(MiConstants.INSIST_ROOT_PATH));
 
         System.in.read();
 

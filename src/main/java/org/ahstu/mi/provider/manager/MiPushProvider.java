@@ -10,7 +10,7 @@ import org.ahstu.mi.module.ServiceMeta;
 import org.ahstu.mi.provider.MiProviderMeta;
 import org.ahstu.mi.provider.MiProviderStore;
 import org.ahstu.mi.provider.factory.ProviderFactory;
-import org.ahstu.mi.zk.InsistZkClient;
+import org.ahstu.mi.zk.MiZkClient;
 import org.ahstu.mi.zk.api.IZkClient;
 
 /**
@@ -22,7 +22,7 @@ public class MiPushProvider {
 
         MiLogger.record(StringUtil.format("MiPushProvider.push start ! json:"+ JSON.toJSONString(serviceMeta)));
 
-        IZkClient zkClient =  InsistZkClient.getInstance();
+        IZkClient zkClient =  MiZkClient.getInstance();
 
         //--/insist/consumer/forservice/group/com.xxx.service/version/ip
         //--/insist/prodiver/forservice/group/com.xxx.service/version/ip

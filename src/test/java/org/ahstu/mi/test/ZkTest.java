@@ -1,7 +1,7 @@
 package org.ahstu.mi.test;
 
 import org.ahstu.mi.common.MiUtil;
-import org.ahstu.mi.zk.InsistZkClient;
+import org.ahstu.mi.zk.MiZkClient;
 
 import java.util.List;
 
@@ -16,12 +16,12 @@ public class ZkTest {
         System.out.println("/insist/consumer/forservice/user/com.bozhong.insist.test.service.UserService/1.0.0.daily".split("/").length);
 
 
-        InsistZkClient.getInstance().connect();
-        // InsistZkClient.getInstance().deleteNode("/insist/consumer/forservice/user/com.bozhong.insist.test.service.UserService/1.0.0.daily");
-       // InsistZkClient.getInstance().deleteNode("/insist/consumer/forservice/user");
+        MiZkClient.getInstance().connect();
+        // MiZkClient.getInstance().deleteNode("/insist/consumer/forservice/user/com.bozhong.insist.test.service.UserService/1.0.0.daily");
+       // MiZkClient.getInstance().deleteNode("/insist/consumer/forservice/user");
         ///insist/prodiver/forservice/com.bozhong.insist.test.service.UserService/user/1.0.0.daily
         String path =  "insist/prodiver/forservice/user/com.bozhong.insist.test.service.UserService/1.0.0.daily";
-        List<String> list = InsistZkClient.getInstance().getTreeForList("insist/prodiver/forservice") ;
+        List<String> list = MiZkClient.getInstance().getTreeForList("insist/prodiver/forservice") ;
 
         System.out.println("************** service start********************");
         for(String sss : list){
@@ -32,7 +32,7 @@ public class ZkTest {
         }
         System.out.println("************** service end ********************");
 
-        List<String> consumerList = InsistZkClient.getInstance().getTreeForList(MiUtil.getConsumerZkPath()) ;
+        List<String> consumerList = MiZkClient.getInstance().getTreeForList(MiUtil.getConsumerZkPath()) ;
         System.out.println("************** consumerList start********************");
         for(String consumer : consumerList){
             if(consumer.split("/").length<7){

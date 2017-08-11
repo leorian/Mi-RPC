@@ -64,7 +64,7 @@ public class ZkChildrenWatcher implements Watcher {
         }finally {
             if(watchedEvent.getType().name().equals(Event.EventType.NodeChildrenChanged.name()) && StringUtil.isNotBlank(watchedEvent.getPath())){
                 try {
-                    InsistZkClient.getInstance().addChildWatcher(watchedEvent.getPath(), this);
+                    MiZkClient.getInstance().addChildWatcher(watchedEvent.getPath(), this);
                 }catch (Throwable e1){
                     MiLogger.record(StringUtil.format("ZkChildrenWatcher.process addChildWatcher error ! path:%s errorCode:%s",
                             watchedEvent.getPath(),

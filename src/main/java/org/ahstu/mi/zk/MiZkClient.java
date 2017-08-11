@@ -21,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by xiezg@317hu.com on 2017/5/18 0018.
  */
-public class InsistZkClient implements IZkClient {
+public class MiZkClient implements IZkClient {
 
     private static IZkClient iZkClient = null;
 
@@ -35,7 +35,7 @@ public class InsistZkClient implements IZkClient {
 
     private CountDownLatch countDownLatch = new CountDownLatch(1);//同步计数器
 
-    private InsistZkClient() {
+    private MiZkClient() {
 
     }
 
@@ -43,9 +43,9 @@ public class InsistZkClient implements IZkClient {
         if (iZkClient == null) {
             try {
                 reentrantLock.lock();
-                synchronized (InsistZkClient.class) {
+                synchronized (MiZkClient.class) {
                     if (iZkClient == null) {
-                        iZkClient = new InsistZkClient();
+                        iZkClient = new MiZkClient();
                     }
                 }
             } finally {
@@ -88,7 +88,7 @@ public class InsistZkClient implements IZkClient {
             throw new MiException(MiError.INSIST_ZK_HOST_ISNULL);
         }
 
-        MiLogger.record("********** InsistZkClient.connect start zkHosts:" + zkHosts + " *****************");
+        MiLogger.record("********** MiZkClient.connect start zkHosts:" + zkHosts + " *****************");
 
         this.zkHosts = zkHosts;
         MiLogger.getSysLogger().warn(this.getClass().getSimpleName() + " connect is start ! ");
@@ -111,7 +111,7 @@ public class InsistZkClient implements IZkClient {
         MiLogger.getSysLogger().warn(this.getClass().getSimpleName() + " - connect await in ! ");
         countDownLatch.await();
         MiLogger.getSysLogger().warn(this.getClass().getSimpleName() + "- connect await out ! "
-                + InsistZkClient.class.getSimpleName() + " connect zk is success ! ");
+                + MiZkClient.class.getSimpleName() + " connect zk is success ! ");
 
         createPersistent(MiConstants.INSIST_ZK_SLASH + MiConstants.INSIST_ROOT_PATH);
         addExistsWatcher(MiConstants.INSIST_ZK_SLASH + MiConstants.INSIST_ROOT_PATH, ZkConnectionWatcher.getInstance());
@@ -277,7 +277,7 @@ public class InsistZkClient implements IZkClient {
                     dealList.add(index + 1, tempPath + children.get(i));
                 }
             } catch (Throwable e) {
-                MiLogger.record("InsistZkClient.getTreeForList error ! path:"+path+ " tempPath:"+tempPath,e);
+                MiLogger.record("MiZkClient.getTreeForList error ! path:"+path+ " tempPath:"+tempPath,e);
             }
             index++;
         }
