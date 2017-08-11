@@ -4,25 +4,28 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-       		http://org.ahstu.com/mi http://org.ahstu.com/mi/mi.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       		http://org.ahstu.com/mi
+       		http://org.ahstu.com/mi/mi.xsd
+       		http://www.springframework.org/schema/context
+       		http://www.springframework.org/schema/context/spring-context.xsd"
        default-autowire="byName">
 
-    <context:annotation-config />
+    <context:annotation-config/>
 
     <bean id="userServiceClient" class="org.ahstu.mi.test.service.UserServiceClient">
         <property name="userService" ref="userService"/>
     </bean>
 
     <mi:consumer id="userService"
-                     interface="org.ahstu.mi.test.service.UserService"
-                     version="1.0.0.daily"
-                     group="user"/>
+                 interface="org.ahstu.mi.test.service.UserService"
+                 version="1.0.0.daily"
+                 group="user"/>
 
     <mi:consumer id="tradeServiceClient" interface="org.ahstu.mi.test.service.TradeService"
-                     version="1.0.0.daily"
-                     group="trade"/>
+                 version="1.0.0.daily"
+                 group="trade"/>
 
     <mi:consumer id="courseCenterClient" interface="org.ahstu.mi.test.service.CourseCenterService"
-                     version="1.0.0.daily" group="course"/>
+                 version="1.0.0.daily" group="course"/>
 
 </beans>

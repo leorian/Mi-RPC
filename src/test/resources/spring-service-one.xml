@@ -3,7 +3,8 @@
        xmlns:mi="http://org.ahstu.com/mi" xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-       		http://org.ahstu.com/mi mi.xsd"
+       		http://org.ahstu.com/mi
+       		http://org.ahstu.com/mi.xsd"
        default-autowire="byName">
 
     <bean id="userService" class="org.ahstu.mi.test.service.impl.UserServiceImpl"/>
