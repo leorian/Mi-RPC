@@ -1,0 +1,321 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.317hu.com/insist"
+           xmlns="http://www.317hu.com/insist"
+           xmlns:tool="http://www.springframework.org/schema/tool"
+           elementFormDefault="qualified">
+    <xs:import namespace="http://www.springframework.org/schema/tool"/>
+
+    <xs:complexType name="idType">
+        <xs:attribute name="id" type="xs:ID" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[ Bean unique ID. ]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="serviceType">
+        <xs:complexContent>
+            <xs:extension base="idType">
+                <xs:attribute name="interface" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ Service interface. ]]></xs:documentation>
+                        <xs:appinfo>
+                            <tool:annotation>
+                                <tool:expected-type type="java.lang.Class"/>
+                            </tool:annotation>
+                        </xs:appinfo>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="version" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ Service version. ]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="group" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ Service group. ]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="methodSpecialType">
+        <xs:attribute name="name" type="xs:string" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[ Method name. ]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="timeout" type="xs:integer" use="required">
+            <xs:annotation>
+                <xs:documentation><![CDATA[ Method timeout. ]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="retries" type="xs:integer" use="optional">
+            <xs:annotation>
+                <xs:documentation><![CDATA[ Method retries. ]]></xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="methodSpecialsType">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="methodSpecial" type="methodSpecialType"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:simpleType name="asyncallType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="future">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ Future invoke. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="callback">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ Callback invoke. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="serializeTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="hessian">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ Hessian. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="java">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ JDK. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="writeModeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="unit">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ Unit. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="center">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ Center. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="asyncallMethodsType">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="method">
+                <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[ Method name. ]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="type" type="asyncallType" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[ Method type. ]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="listener" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[ Callback listener. ]]></xs:documentation>
+                            <xs:appinfo>
+                                <tool:annotation>
+                                    <tool:expected-type type="java.lang.Class"/>
+                                </tool:annotation>
+                            </xs:appinfo>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="configserverCenterType">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="center">
+                <xs:complexType>
+                    <xs:attribute name="name" type="xs:string" use="required">
+                        <xs:annotation>
+                            <xs:documentation><![CDATA[ Center name. ]]></xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:simpleType name="proxyStyleType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="jdk">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ JDK proxy. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="javassist">
+                <xs:annotation>
+                    <xs:documentation><![CDATA[ Javassist proxy. ]]></xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="providerType">
+        <xs:complexContent>
+            <xs:extension base="serviceType">
+                <!--<xs:choice minOccurs="0" maxOccurs="unbounded">-->
+                    <!--<xs:element name="methodSpecials" type="methodSpecialsType"/>-->
+                    <!--<xs:element name="configserverCenter" type="configserverCenterType"/>-->
+                <!--</xs:choice>-->
+                <xs:attribute name="ref" type="xs:string" use="required">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ The interface real impl. ]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <!--<xs:attribute name="enableTXC" type="xs:boolean" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ EnableTXC config. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <xs:attribute name="clientTimeout" type="xs:integer" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ Timeout config. ]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <!--<xs:attribute name="serializeType" type="serializeTypeType" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ The serialize type. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="enableTXC" type="xs:boolean" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Turn on enableTXC. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="corePoolSize" type="xs:integer" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Core poll size. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="delayedPublish" type="xs:string" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Turn on delay publish. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="maxPoolSize" type="xs:integer" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Max poll size. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="methodToInjectConsumerIp" type="xs:string" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Method to inject consumer ip. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <xs:attribute name="serviceDesc" type="xs:string" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ The service desc. ]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <!--<xs:attribute name="serviceName" type="xs:string" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ The service name. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="supportAsynCall" type="xs:string" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Support asyn call. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="writeMode" type="writeModeType" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Write mode. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="route" type="xs:integer" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Route. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="routeCheck" type="xs:boolean" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Route check. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="consumerType">
+        <xs:complexContent>
+            <xs:extension base="serviceType">
+                <!--<xs:choice minOccurs="0" maxOccurs="unbounded">-->
+                    <!--<xs:element name="methodSpecials" type="methodSpecialsType"/>-->
+                    <!--<xs:element name="asyncallMethods" type="asyncallMethodsType"/>-->
+                <!--</xs:choice>-->
+                <!--<xs:attribute name="callbackInvoker" type="xs:string">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ The service callback invoker. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="maxThreadPool" type="xs:integer">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Max pool size. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="target" type="xs:string">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Target ip. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="proxyStyle" type="proxyStyleType">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Proxy type. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <xs:attribute name="connectionNum" type="xs:integer">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ Connection num. ]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <!--<xs:attribute name="generic" type="xs:boolean">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Support generic. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="secureKey" type="xs:string">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Secure key. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <!--<xs:attribute name="maxWaitTimeForCsAddress" type="xs:integer">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Max wait time for cs address. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+                <xs:attribute name="clientTimeout" type="xs:integer" use="optional">
+                    <xs:annotation>
+                        <xs:documentation><![CDATA[ Timeout config. ]]></xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <!--<xs:attribute name="maxWaitAddressTimeMS" type="xs:integer" use="optional">-->
+                    <!--<xs:annotation>-->
+                        <!--<xs:documentation><![CDATA[ Max wait address time in millis. ]]></xs:documentation>-->
+                    <!--</xs:annotation>-->
+                <!--</xs:attribute>-->
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:element name="provider" type="providerType"/>
+
+    <xs:element name="consumer" type="consumerType"/>
+</xs:schema>

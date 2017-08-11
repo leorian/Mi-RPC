@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:insist="http://www.317hu.com/insist" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       		http://www.317hu.com/insist insist.xsd"
+       default-autowire="byName">
+
+    <insist:consumer id="userServiceClient"
+                     interface="org.ahstu.mi.test.service.UserService"
+                     version="1.0.0.daily"
+                     group="user"/>
+
+    <insist:consumer id="tradeServiceClient" interface="org.ahstu.mi.test.service.TradeService"
+                     version="1.0.0.daily"
+                     group="trade"/>
+
+    <insist:consumer id="courseCenterClient" interface="org.ahstu.mi.test.service.CourseCenterService"
+                     version="1.0.0.daily" group="course"/>
+
+</beans>

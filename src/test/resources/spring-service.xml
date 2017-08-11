@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:insist="http://www.317hu.com/insist" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       		http://www.317hu.com/insist insist.xsd"
+       default-autowire="byName">
+
+        <bean id="userService" class="org.ahstu.mi.test.service.impl.UserServiceImpl"/>
+
+        <bean id="tradeService" class="org.ahstu.mi.test.service.impl.TradeServiceImpl"/>
+
+        <!--<bean id="insistDynamicCallService" class="com.bozhong.insist.dynamic.InsistDynamicCallServiceImpl"/>-->
+
+        <!--<bean class="com.bozhong.insist.dynamic.InsistDynamicCallServiceProviderRegister"/>-->
+
+        <insist:provider id="userServiceInsist"
+                         interface="org.ahstu.mi.test.service.UserService"
+                         version="1.0.0.daily"
+                         group="user"
+                         ref="userService"/>
+
+        <insist:provider id="tradeServiceInsist"
+                         interface="org.ahstu.mi.test.service.TradeService"
+                         version="1.0.0.daily"
+                         group="trade"
+                         ref="tradeService"/>
+
+        <!--<insist:provider id="insistDynamicCallServiceInsist"-->
+                         <!--interface="com.bozhong.insist.dynamic.InsistDynamicCallService"-->
+                         <!--version="1.0.0.daily" group="trade" ref="insistDynamicCallService"/>-->
+
+
+</beans>
