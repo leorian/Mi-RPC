@@ -18,14 +18,14 @@ public class MiLogger {
 
 
     private static Logger logger;
-    private final static String MI_LOG_NAME = "insistlog";
-    private final static String MI_LOG_FILE = "insist.log";
+    private final static String MI_LOG_NAME = "milog";
+    private final static String MI_LOG_FILE = "mi.log";
     //%-d{yyyy-MM-dd HH:mm:ss}  %m%n
     private final static String PATTERN_LAYOUT = "%-d{yyyy-MM-dd HH:mm:ss}  %m%n";
 
-    private final static String MAC_LOG_FILE_PATH = "/tmp/log/insistlog/";
-    private final static String LINUX_LOG_FILE_PATH = "/var/log/insistlog/";
-    private final static String WINODWS_LOG_FILE_PATH = "C:/log/insistlog/";
+    private final static String MAC_LOG_FILE_PATH = "/tmp/log/milog/";
+    private final static String LINUX_LOG_FILE_PATH = "/var/log/milog/";
+    private final static String WINODWS_LOG_FILE_PATH = "C:/log/milog/";
     private final static int maxFileSize=3;
 
     public static String getLogFilePath() {

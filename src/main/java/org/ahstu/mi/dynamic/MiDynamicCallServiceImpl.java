@@ -71,13 +71,13 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
     }
 
     @Override
-    public Object dynamicCallMethod(MiDynamicDTO insistDynamicDTO) {
-        System.out.println(insistDynamicDTO);
-        String serviceName = insistDynamicDTO.getServiceName();//服务名称
-        String group = insistDynamicDTO.getGroup();//组名
-        String version = insistDynamicDTO.getVersion();//版本名称
-        String methodName = insistDynamicDTO.getMethod();//方法名称
-        String param = insistDynamicDTO.getParam();//参数
+    public Object dynamicCallMethod(MiDynamicDTO miDynamicDTO) {
+        System.out.println(miDynamicDTO);
+        String serviceName = miDynamicDTO.getServiceName();//服务名称
+        String group = miDynamicDTO.getGroup();//组名
+        String version = miDynamicDTO.getVersion();//版本名称
+        String methodName = miDynamicDTO.getMethod();//方法名称
+        String param = miDynamicDTO.getParam();//参数
         JSONArray jsonArray = JSON.parseArray(param);
         MiProviderMeta providerMeta =
                 MiProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
@@ -367,11 +367,11 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
     }
 
     @Override
-    public Object listInterfaceMethod(MiDynamicDTO insistDynamicDTO) {
-        System.out.println(insistDynamicDTO);
-        String serviceName = insistDynamicDTO.getServiceName();//服务名称
-        String group = insistDynamicDTO.getGroup();//组名
-        String version = insistDynamicDTO.getVersion();//版本名称
+    public Object listInterfaceMethod(MiDynamicDTO miDynamicDTO) {
+        System.out.println(miDynamicDTO);
+        String serviceName = miDynamicDTO.getServiceName();//服务名称
+        String group = miDynamicDTO.getGroup();//组名
+        String version = miDynamicDTO.getVersion();//版本名称
         MiProviderMeta providerMeta =
                 MiProviderStore.get(MiUtil.serviceGroupVersionCreateKey(serviceName, group, version));
         Object provider = providerMeta.getRef();
@@ -382,13 +382,13 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
             e.printStackTrace();
         }
 
-        List<MiServiceMethodDO> insistServiceMethodDOList = new ArrayList<MiServiceMethodDO>();
+        List<MiServiceMethodDO> miServiceMethodDOList = new ArrayList<MiServiceMethodDO>();
         for (Method method : providerClass.getDeclaredMethods()) {
-            MiServiceMethodDO insistServiceMethodDO = new MiServiceMethodDO();
-            insistServiceMethodDO.setReturnType(method.getReturnType().getName());
-            insistServiceMethodDO.setSimpleMethodName(method.getName());
-            if (insistServiceMethodDO.getInsistServiceMethodParameterDOList() == null) {
-                insistServiceMethodDO.setInsistServiceMethodParameterDOList(new ArrayList<MiServiceMethodParameterDO>());
+            MiServiceMethodDO miServiceMethodDO = new MiServiceMethodDO();
+            miServiceMethodDO.setReturnType(method.getReturnType().getName());
+            miServiceMethodDO.setSimpleMethodName(method.getName());
+            if (miServiceMethodDO.getInsistServiceMethodParameterDOList() == null) {
+                miServiceMethodDO.setInsistServiceMethodParameterDOList(new ArrayList<MiServiceMethodParameterDO>());
             }
 
             String methodName = method.getReturnType().getName() + " " + method.getName() + "(";
@@ -398,12 +398,12 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
                     methodName += ",";
                 }
                 methodName += type.toString();
-                MiServiceMethodParameterDO insistServiceMethodParameterDO = new MiServiceMethodParameterDO();
-                insistServiceMethodParameterDO.setParameterIndex(i);
-                insistServiceMethodParameterDO.setParameterTypeName(type.toString());
+                MiServiceMethodParameterDO miServiceMethodParameterDO = new MiServiceMethodParameterDO();
+                miServiceMethodParameterDO.setParameterIndex(i);
+                miServiceMethodParameterDO.setParameterTypeName(type.toString());
                 if (inputType.get(type.toString()) != null) {
-                    insistServiceMethodParameterDO.setParameterHtmlDomType(ParameterHtmlDomType.INPUT);
-                    insistServiceMethodParameterDO.setParameterExample(inputType.get(type.toString()));
+                    miServiceMethodParameterDO.setParameterHtmlDomType(ParameterHtmlDomType.INPUT);
+                    miServiceMethodParameterDO.setParameterExample(inputType.get(type.toString()));
                 } else {
                     if (!type.toString().startsWith("class [") && type.toString().startsWith("class ")) { //单个对象
                         try {
@@ -413,8 +413,8 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
                             for (Field field : fields) {
                                 map.put(field.getName(), field.getGenericType().toString());
                             }
-                            insistServiceMethodParameterDO.setParameterExample(JSON.toJSONString(map));
-                            insistServiceMethodParameterDO.setJsonObject(true);
+                            miServiceMethodParameterDO.setParameterExample(JSON.toJSONString(map));
+                            miServiceMethodParameterDO.setJsonObject(true);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -429,8 +429,8 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
                             List<Object> objectList = new ArrayList<Object>();
                             objectList.add(map);
                             objectList.add(map);
-                            insistServiceMethodParameterDO.setParameterExample(JSON.toJSON(objectList).toString());
-                            insistServiceMethodParameterDO.setJsonObject(true);
+                            miServiceMethodParameterDO.setParameterExample(JSON.toJSON(objectList).toString());
+                            miServiceMethodParameterDO.setJsonObject(true);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -445,8 +445,8 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
                             List<Object> objectList = new ArrayList<Object>();
                             objectList.add(map);
                             objectList.add(map);
-                            insistServiceMethodParameterDO.setParameterExample(JSON.toJSON(objectList).toString());
-                            insistServiceMethodParameterDO.setJsonObject(true);
+                            miServiceMethodParameterDO.setParameterExample(JSON.toJSON(objectList).toString());
+                            miServiceMethodParameterDO.setJsonObject(true);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -461,8 +461,8 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
                             List<Object> objectList = new ArrayList<Object>();
                             objectList.add(map);
                             objectList.add(map);
-                            insistServiceMethodParameterDO.setParameterExample(JSON.toJSON(objectList).toString());
-                            insistServiceMethodParameterDO.setJsonObject(true);
+                            miServiceMethodParameterDO.setParameterExample(JSON.toJSON(objectList).toString());
+                            miServiceMethodParameterDO.setJsonObject(true);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
@@ -507,24 +507,24 @@ public class MiDynamicCallServiceImpl implements MiDynamicCallService {
                             }
 
 
-                            insistServiceMethodParameterDO.setParameterExample(JSON.toJSON(map).toString());
-                            insistServiceMethodParameterDO.setJsonObject(true);
+                            miServiceMethodParameterDO.setParameterExample(JSON.toJSON(map).toString());
+                            miServiceMethodParameterDO.setJsonObject(true);
                         } catch (ClassNotFoundException e) {
                             e.printStackTrace();
                         }
                     }
 
-                    insistServiceMethodParameterDO.setParameterHtmlDomType(ParameterHtmlDomType.TEXTAREA);
+                    miServiceMethodParameterDO.setParameterHtmlDomType(ParameterHtmlDomType.TEXTAREA);
                 }
 
-                insistServiceMethodDO.getInsistServiceMethodParameterDOList().add(insistServiceMethodParameterDO);
+                miServiceMethodDO.getInsistServiceMethodParameterDOList().add(miServiceMethodParameterDO);
                 i++;
             }
             methodName += ")";
-            insistServiceMethodDO.setAbsoluteMethodName(methodName);
-            insistServiceMethodDOList.add(insistServiceMethodDO);
+            miServiceMethodDO.setAbsoluteMethodName(methodName);
+            miServiceMethodDOList.add(miServiceMethodDO);
         }
-        return insistServiceMethodDOList;
+        return miServiceMethodDOList;
     }
 
     private Object parseObject(Object o, Class c) {

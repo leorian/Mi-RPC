@@ -11,30 +11,30 @@ import java.util.Map;
  */
 public class MiLockStore {
 
-  private static Map<String,MiLock>  insistLockStore =new HashMap<String, MiLock>();
+  private static Map<String,MiLock>  miLockStore =new HashMap<String, MiLock>();
 
-  public static void add(MiLock insistLock){
+  public static void add(MiLock miLock){
 
-      if(insistLock==null || insistLock.getLockId()==null || insistLock.getLockId().isEmpty()
+      if(miLock==null || miLock.getLockId()==null || miLock.getLockId().isEmpty()
              ){
 
           throw new MiException(MiError.MI_ADDLOCK_ISNULL);
       }
 
-      if(insistLockStore.get(insistLock.getLockId())!=null){
+      if(miLockStore.get(miLock.getLockId())!=null){
           throw new MiException(MiError.MI_ADDLOCK_EXIST);
       }
 
-      insistLockStore.put(insistLock.getLockId(),insistLock);
+      miLockStore.put(miLock.getLockId(),miLock);
   }
 
 
   public static MiLock get(String lockId){
-      return insistLockStore.get(lockId);
+      return miLockStore.get(lockId);
   }
 
   public static void del(String lockId){
-      insistLockStore.remove(lockId);
+      miLockStore.remove(lockId);
   }
 
 

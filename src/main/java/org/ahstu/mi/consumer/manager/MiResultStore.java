@@ -10,21 +10,21 @@ import java.util.Map;
  */
 public class MiResultStore {
 
-    private static Map<String,MiResult> insistResultMap =new Hashtable<String, MiResult>();
+    private static Map<String,MiResult> miResultMap =new Hashtable<String, MiResult>();
 
 
-    public static void add(MiResult insistResult){
-        insistResultMap.put(insistResult.getRequestId(),insistResult);
+    public static void add(MiResult miResult){
+        miResultMap.put(miResult.getRequestId(),miResult);
     }
 
     public static MiResult getAndRemove(String requestId){
-        MiResult result = insistResultMap.get(requestId);
-        insistResultMap.remove(requestId);
+        MiResult result = miResultMap.get(requestId);
+        miResultMap.remove(requestId);
         return result;
     }
 
     public static void remove(String requestId){
-        insistResultMap.remove(requestId);
+        miResultMap.remove(requestId);
     }
 
 }

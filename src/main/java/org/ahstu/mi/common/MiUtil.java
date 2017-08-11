@@ -100,7 +100,7 @@ public class MiUtil {
         return ip;
     }
 
-    public static void insistStartUp() {
+    public static void miStartUp() {
         if(MI_START_SUCCESS){
             return ;
         }
@@ -110,10 +110,10 @@ public class MiUtil {
             if(MI_START_SUCCESS){
                 return ;
             }
-            MiLogger.record(StringUtil.format("**************** insist start up ****************"));
+            MiLogger.record(StringUtil.format("**************** mi start up ****************"));
             NettyServer.getRpcServer().start();
-            //--/insist/consumer/forservice/group/com.xxx.service/version/ip
-            //--/insist/prodiver/forservice/group/com.xxx.service/version/ip
+            //--/mi/consumer/forservice/group/com.xxx.service/version/ip
+            //--/mi/prodiver/forservice/group/com.xxx.service/version/ip
 
             IZkClient zkClient = MiZkClient.getInstance();
             zkClient.connect();
@@ -136,14 +136,14 @@ public class MiUtil {
                 zkClient.addNode(consumerServicePath, false);
             }
             MI_START_SUCCESS=true;
-            MiLogger.record(StringUtil.format("**************** insist end ****************"));
+            MiLogger.record(StringUtil.format("**************** mi end ****************"));
 
         } catch (Throwable e) {
             MiLogger.record("MiZkClient start up error ! errorCode:"+e.getMessage(), e);
             if(e.getMessage().equals(MiError.MI_ZK_HOST_ISNULL.getErrorCode())){
                 try {
                     Thread.sleep(3000l);
-                    insistStartUp();
+                    miStartUp();
                 }catch (Throwable e1){
                     MiLogger.record("waiting 3s MiZkClient restart up error ! errorCode:"+e1.getMessage(), e1);
                 }

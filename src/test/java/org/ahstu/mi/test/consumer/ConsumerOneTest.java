@@ -29,7 +29,7 @@ public class ConsumerOneTest {
 
     public static void main(String[] args) throws Throwable{
 
-        Class sss= Class.forName("com.bozhong.insist.test.service.UserService");
+        Class sss= Class.forName("com.bozhong.mi.test.service.UserService");
         java.lang.reflect.Method[] methods = sss.getMethods();
         for(Method method : methods){
             System.out.println(method.getName());

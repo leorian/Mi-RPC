@@ -23,8 +23,8 @@ public class InsistPushConsumer {
 
         IZkClient zkClient =  MiZkClient.getInstance();
 
-        //--/insist/consumer/forservice/group/com.xxx.service/version/ip
-        //--/insist/prodiver/forservice/group/com.xxx.service/version/ip
+        //--/mi/consumer/forservice/group/com.xxx.service/version/ip
+        //--/mi/prodiver/forservice/group/com.xxx.service/version/ip
 
         String groupPath = MiUtil.getConsumerZkPath()+ MiConstants.MI_ZK_SLASH+clientMeta.getGroup();
         String serviceGroupPath =groupPath+ MiConstants.MI_ZK_SLASH+clientMeta.getInterfaceName();

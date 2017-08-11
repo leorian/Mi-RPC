@@ -95,9 +95,9 @@ public class NettyClient {
             synchronized (NETTYCLIENT_LOCK) {
                 chc = NettyChannelHandlerStore.get(chcKey);
                 if (chc == null) {
-                    final MiLock insistLock = new MiLock(chcKey);
-                    MiLockStore.add(insistLock);
-                    synchronized (insistLock) {
+                    final MiLock miLock = new MiLock(chcKey);
+                    MiLockStore.add(miLock);
+                    synchronized (miLock) {
                         try {
                             MiLogger.record(StringUtil.format("NettyClient.getChc ip:%s port:%s connect start !",
                                     sendDTO.getServerIp(),
@@ -105,7 +105,7 @@ public class NettyClient {
 
                             bootstrap.connect(sendDTO.getServerIp(), sendDTO.getPort()).sync();
 
-                            insistLock.lock();
+                            miLock.lock();
 
                             chc = NettyChannelHandlerStore.get(chcKey);
 

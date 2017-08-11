@@ -9,8 +9,8 @@ import org.ahstu.mi.common.MiSendDTO;
 public interface RpcCallExcutor {
     /**
      *
-     * @param insistSendDTO
+     * @param miSendDTO
      * @return
      */
-    public MiResult remoteCall(MiSendDTO insistSendDTO);
+    public MiResult remoteCall(MiSendDTO miSendDTO);
 }

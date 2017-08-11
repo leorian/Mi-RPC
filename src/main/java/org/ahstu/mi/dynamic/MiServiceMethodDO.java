@@ -26,7 +26,7 @@ public class MiServiceMethodDO implements Serializable {
     /**
      * 参数类型
      */
-    private List<MiServiceMethodParameterDO> insistServiceMethodParameterDOList;
+    private List<MiServiceMethodParameterDO> miServiceMethodParameterDOList;
 
     public String getSimpleMethodName() {
         return simpleMethodName;
@@ -53,10 +53,10 @@ public class MiServiceMethodDO implements Serializable {
     }
 
     public List<MiServiceMethodParameterDO> getInsistServiceMethodParameterDOList() {
-        return insistServiceMethodParameterDOList;
+        return miServiceMethodParameterDOList;
     }
 
-    public void setInsistServiceMethodParameterDOList(List<MiServiceMethodParameterDO> insistServiceMethodParameterDOList) {
-        this.insistServiceMethodParameterDOList = insistServiceMethodParameterDOList;
+    public void setInsistServiceMethodParameterDOList(List<MiServiceMethodParameterDO> miServiceMethodParameterDOList) {
+        this.miServiceMethodParameterDOList = miServiceMethodParameterDOList;
     }
 }

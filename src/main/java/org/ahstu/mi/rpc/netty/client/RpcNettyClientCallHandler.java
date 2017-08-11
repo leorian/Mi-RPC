@@ -30,24 +30,24 @@ public class RpcNettyClientCallHandler extends MiChannelHandlerAdapter {
         String ipAndPortKey = MiUtil.ipAndPortCreateKey(remoteIp.equals("localhost") ? "127.0.0.1" : remoteIp,port);
 
         NettyChannelHandlerStore.add(ipAndPortKey, ctx);
-        MiLock insistLock = MiLockStore.get(ipAndPortKey);
-        if(insistLock!=null){
-            synchronized (insistLock) {
-                insistLock.unlock();
+        MiLock miLock = MiLockStore.get(ipAndPortKey);
+        if(miLock!=null){
+            synchronized (miLock) {
+                miLock.unlock();
             }
         }
 
-        MiLogger.record(StringUtil.format("RpcNettyClientCallHandler.channelActive ipAndPortKey:%s  insistLock:%s connect success !",
-                ipAndPortKey,insistLock==null));
+        MiLogger.record(StringUtil.format("RpcNettyClientCallHandler.channelActive ipAndPortKey:%s  miLock:%s connect success !",
+                ipAndPortKey,miLock==null));
     }
 
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception{
         MiResult result = (MiResult)msg;
         MiResultStore.add(result);
-        MiLock insistLock = MiLockStore.get(result.getRequestId());
-        if(insistLock!=null){
-            synchronized (insistLock) {
-                insistLock.unlock();
+        MiLock miLock = MiLockStore.get(result.getRequestId());
+        if(miLock!=null){
+            synchronized (miLock) {
+                miLock.unlock();
             }
         }
     }
@@ -66,10 +66,10 @@ public class RpcNettyClientCallHandler extends MiChannelHandlerAdapter {
 
         NettyChannelHandlerStore.remove(ipAndPortKey);
 
-        MiLock insistLock = MiLockStore.get(ipAndPortKey);
+        MiLock miLock = MiLockStore.get(ipAndPortKey);
 
-        if(insistLock!=null){
-            insistLock.unlock();
+        if(miLock!=null){
+            miLock.unlock();
         }
         ctx.close();
         throw new MiException(cause.getMessage(),cause);

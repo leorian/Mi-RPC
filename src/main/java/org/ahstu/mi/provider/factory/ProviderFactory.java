@@ -10,59 +10,59 @@ import org.ahstu.mi.rpc.netty.server.NettyServer;
  */
 public class ProviderFactory {
 
-    public static MiProviderMeta springProviderToProviderMeta(MiSpringProviderBean insistSpringProviderBean){
+    public static MiProviderMeta springProviderToProviderMeta(MiSpringProviderBean miSpringProviderBean){
 
-        MiProviderMeta insistProviderMeta = new MiProviderMeta();
+        MiProviderMeta miProviderMeta = new MiProviderMeta();
 
-        insistProviderMeta.setId(insistSpringProviderBean.getId());
-        insistProviderMeta.setInterfaceName(insistSpringProviderBean.getInterfaceName());
-        insistProviderMeta.setVersion(insistSpringProviderBean.getVersion());
-        insistProviderMeta.setGroup(insistSpringProviderBean.getGroup());
-        insistProviderMeta.setRef(insistSpringProviderBean.getTarget());
-        insistProviderMeta.setServiceDesc(insistSpringProviderBean.getServiceDesc());
-        insistProviderMeta.setClientTimeout(insistSpringProviderBean.getClientTimeout());
+        miProviderMeta.setId(miSpringProviderBean.getId());
+        miProviderMeta.setInterfaceName(miSpringProviderBean.getInterfaceName());
+        miProviderMeta.setVersion(miSpringProviderBean.getVersion());
+        miProviderMeta.setGroup(miSpringProviderBean.getGroup());
+        miProviderMeta.setRef(miSpringProviderBean.getTarget());
+        miProviderMeta.setServiceDesc(miSpringProviderBean.getServiceDesc());
+        miProviderMeta.setClientTimeout(miSpringProviderBean.getClientTimeout());
 
 
-        insistProviderMeta.verification();
+        miProviderMeta.verification();
 
-        return insistProviderMeta;
+        return miProviderMeta;
 
 
     }
 
-    public static ServiceMeta insistProviderMetaToServiceMeta(MiProviderMeta insistProviderMeta){
+    public static ServiceMeta miProviderMetaToServiceMeta(MiProviderMeta miProviderMeta){
         ServiceMeta serviceMeta =new ServiceMeta();
         serviceMeta.setPort(NettyServer.getInstance().getServerPort());
         serviceMeta.setIp(NettyServer.getInstance().getServerIp());
 
-        serviceMeta.setGroup(insistProviderMeta.getGroup());
-        serviceMeta.setId(insistProviderMeta.getId());
-        serviceMeta.setServiceDesc(insistProviderMeta.getServiceDesc());
-        serviceMeta.setInterfaceName(insistProviderMeta.getInterfaceName());
-        serviceMeta.setVersion(insistProviderMeta.getVersion());
-        if(insistProviderMeta.getClientTimeout()==0){
+        serviceMeta.setGroup(miProviderMeta.getGroup());
+        serviceMeta.setId(miProviderMeta.getId());
+        serviceMeta.setServiceDesc(miProviderMeta.getServiceDesc());
+        serviceMeta.setInterfaceName(miProviderMeta.getInterfaceName());
+        serviceMeta.setVersion(miProviderMeta.getVersion());
+        if(miProviderMeta.getClientTimeout()==0){
             serviceMeta.setClientTimeout(3000L);
         }else {
-            serviceMeta.setClientTimeout(insistProviderMeta.getClientTimeout());
+            serviceMeta.setClientTimeout(miProviderMeta.getClientTimeout());
         }
 
         return serviceMeta;
     }
 
-    public static ServiceMeta springProviderToServiceMeta(MiSpringProviderBean insistSpringProviderBean){
+    public static ServiceMeta springProviderToServiceMeta(MiSpringProviderBean miSpringProviderBean){
         ServiceMeta serviceMeta =new ServiceMeta();
 
         serviceMeta.setPort(NettyServer.getInstance().getServerPort());
         serviceMeta.setIp(NettyServer.getInstance().getServerIp());
-        serviceMeta.setGroup(insistSpringProviderBean.getGroup());
-        serviceMeta.setId(insistSpringProviderBean.getId());
-        serviceMeta.setServiceDesc(insistSpringProviderBean.getServiceDesc());
-        serviceMeta.setInterfaceName(insistSpringProviderBean.getInterfaceName());
-        serviceMeta.setVersion(insistSpringProviderBean.getVersion());
-        if(insistSpringProviderBean.getClientTimeout()==0){
+        serviceMeta.setGroup(miSpringProviderBean.getGroup());
+        serviceMeta.setId(miSpringProviderBean.getId());
+        serviceMeta.setServiceDesc(miSpringProviderBean.getServiceDesc());
+        serviceMeta.setInterfaceName(miSpringProviderBean.getInterfaceName());
+        serviceMeta.setVersion(miSpringProviderBean.getVersion());
+        if(miSpringProviderBean.getClientTimeout()==0){
             serviceMeta.setClientTimeout(3000L);
         }else {
-            serviceMeta.setClientTimeout(insistSpringProviderBean.getClientTimeout());
+            serviceMeta.setClientTimeout(miSpringProviderBean.getClientTimeout());
         }
 
         return serviceMeta;

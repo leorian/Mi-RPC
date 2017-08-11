@@ -11,17 +11,17 @@ public class InsistLockTest {
 
     public static void main(String[] args) throws Throwable{
 
-       final MiLock insistLock = new MiLock(UUID.randomUUID().toString());
+       final MiLock miLock = new MiLock(UUID.randomUUID().toString());
 
         Thread thread=new Thread(new Runnable() {
             @Override
             public void run() {
 
-                synchronized (insistLock){
+                synchronized (miLock){
 
                     try {
                         System.out.println(" test start lock ");
-                        insistLock.lock();
+                        miLock.lock();
 
                         System.out.println(" test end lock ");
                     }catch (Throwable e){
@@ -38,13 +38,13 @@ public class InsistLockTest {
             @Override
             public void run() {
 
-                synchronized (insistLock){
+                synchronized (miLock){
 
                     try {
                         Thread.sleep(3000l);
 
                         System.out.println(" test start unlock ");
-                        insistLock.unlock();
+                        miLock.unlock();
 
                         System.out.println(" test end unlock ");
                     }catch (Throwable e){

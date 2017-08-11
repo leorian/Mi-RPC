@@ -12,37 +12,37 @@ public class ConsumerFactory {
 
     public static MiConsumerMeta springConsumerToConsumerMeta(MiSpringConsumerBean bean){
 
-        MiConsumerMeta insistConsumerMeta  = new MiConsumerMeta();
+        MiConsumerMeta miConsumerMeta  = new MiConsumerMeta();
 
         if(bean!=null){
 
-            insistConsumerMeta.setId(bean.getId());
-            insistConsumerMeta.setGroup(bean.getGroup());
-            insistConsumerMeta.setVersion(bean.getVersion());
-            insistConsumerMeta.setInterfaceName(bean.getInterfaceName());
+            miConsumerMeta.setId(bean.getId());
+            miConsumerMeta.setGroup(bean.getGroup());
+            miConsumerMeta.setVersion(bean.getVersion());
+            miConsumerMeta.setInterfaceName(bean.getInterfaceName());
             try {
-                insistConsumerMeta.setInterfaceClass(Class.forName(bean.getInterfaceName()));
+                miConsumerMeta.setInterfaceClass(Class.forName(bean.getInterfaceName()));
 //              暂时不用
-//                java.lang.reflect.Method[] methods = insistConsumerMeta.getInterfaceClass().getMethods();
+//                java.lang.reflect.Method[] methods = miConsumerMeta.getInterfaceClass().getMethods();
 //                for(Method method : methods){
-//                    insistConsumerMeta.getClassMethodsName().add(method.getName());
+//                    miConsumerMeta.getClassMethodsName().add(method.getName());
 //                }
             }catch (Throwable e){
                 throw new MiException(e.getMessage(),e);
             }
 
-            insistConsumerMeta.setClientTimeout(bean.getClientTimeout());
-            insistConsumerMeta.setConnectionNum(bean.getConnectionNum());
+            miConsumerMeta.setClientTimeout(bean.getClientTimeout());
+            miConsumerMeta.setConnectionNum(bean.getConnectionNum());
             //this is clientip and clientport
-            insistConsumerMeta.setIp(NettyServer.getInstance().getServerIp());
-            insistConsumerMeta.setPort(NettyServer.getInstance().getServerPort());
+            miConsumerMeta.setIp(NettyServer.getInstance().getServerIp());
+            miConsumerMeta.setPort(NettyServer.getInstance().getServerPort());
 
-            insistConsumerMeta.verification();
+            miConsumerMeta.verification();
 
         }
 
 
-        return insistConsumerMeta;
+        return miConsumerMeta;
     }
 
 

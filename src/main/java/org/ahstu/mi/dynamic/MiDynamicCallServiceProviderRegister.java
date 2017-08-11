@@ -32,24 +32,24 @@ public class MiDynamicCallServiceProviderRegister implements BeanFactoryPostProc
             if (MI_START_SUCCESS) {
                 return;
             }
-            BeanDefinitionBuilder insistDynamicCallServiceBuilder = BeanDefinitionBuilder.
+            BeanDefinitionBuilder miDynamicCallServiceBuilder = BeanDefinitionBuilder.
                     rootBeanDefinition(MiDynamicCallServiceImpl.class.getName());
-            beanFactory.registerBeanDefinition("insistDynamicCallService",
-                    insistDynamicCallServiceBuilder.getBeanDefinition());
+            beanFactory.registerBeanDefinition("miDynamicCallService",
+                    miDynamicCallServiceBuilder.getBeanDefinition());
             BeanDefinitionBuilder InsistDynamicCallServiceProviderRegisterBuilder = BeanDefinitionBuilder.
                     rootBeanDefinition(MiSpringProviderBean.class.getName());
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("group", MiDynamicCallConstants.GROUP);
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("version", MiDynamicCallConstants.VERSION);
             InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("interfaceName", MiDynamicCallService.class.getName());
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("id", "insistDynamicCallServiceProviderRegister");
-            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyReference("target", "insistDynamicCallService");
-            beanFactory.registerBeanDefinition("insistDynamicCallServiceProviderRegister",
+            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyValue("id", "miDynamicCallServiceProviderRegister");
+            InsistDynamicCallServiceProviderRegisterBuilder.addPropertyReference("target", "miDynamicCallService");
+            beanFactory.registerBeanDefinition("miDynamicCallServiceProviderRegister",
                     InsistDynamicCallServiceProviderRegisterBuilder.getBeanDefinition());
             System.out.println("XXXXXXXXXX");
             MI_START_SUCCESS = true;
         } catch (Throwable throwable) {
             throwable.printStackTrace();
-            if (beanFactory.getBean("insistDynamicCallServiceProviderRegister") == null) {
+            if (beanFactory.getBean("miDynamicCallServiceProviderRegister") == null) {
                 startDynamicPipeline(beanFactory);
             }
         } finally {

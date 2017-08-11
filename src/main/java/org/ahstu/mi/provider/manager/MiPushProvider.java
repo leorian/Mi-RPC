@@ -24,8 +24,8 @@ public class MiPushProvider {
 
         IZkClient zkClient =  MiZkClient.getInstance();
 
-        //--/insist/consumer/forservice/group/com.xxx.service/version/ip
-        //--/insist/prodiver/forservice/group/com.xxx.service/version/ip
+        //--/mi/consumer/forservice/group/com.xxx.service/version/ip
+        //--/mi/prodiver/forservice/group/com.xxx.service/version/ip
 
         String groupPath = MiUtil.getProviderZkPath()+ MiConstants.MI_ZK_SLASH+serviceMeta.getGroup();
         String serviceGroupPath =groupPath+ MiConstants.MI_ZK_SLASH+serviceMeta.getInterfaceName();
@@ -70,7 +70,7 @@ public class MiPushProvider {
     public static void pushAll(){
 
         for(MiProviderMeta providerMeta : MiProviderStore.getAll()){
-            push(ProviderFactory.insistProviderMetaToServiceMeta(providerMeta));
+            push(ProviderFactory.miProviderMetaToServiceMeta(providerMeta));
         }
 
     }

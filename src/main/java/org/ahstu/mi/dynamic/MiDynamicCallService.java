@@ -10,17 +10,17 @@ public interface MiDynamicCallService {
     /**
      * HTTP 转 RPC
      *
-     * @param insistDynamicDTO
+     * @param miDynamicDTO
      * @return
      */
-    Object dynamicCallMethod(MiDynamicDTO insistDynamicDTO);
+    Object dynamicCallMethod(MiDynamicDTO miDynamicDTO);
 
     /**
      * 列举服务拥有的方法列表
      *
-     * @param insistDynamicDTO
+     * @param miDynamicDTO
      * @return
      */
-    Object listInterfaceMethod(MiDynamicDTO insistDynamicDTO);
+    Object listInterfaceMethod(MiDynamicDTO miDynamicDTO);
 
 }

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	   xmlns:insist="http://www.317hu.com/insist" xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:mi="http://www.317hu.com/mi" xmlns="http://www.springframework.org/schema/beans"
 	   xsi:schemaLocation="http://www.springframework.org/schema/beans
        		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-       		http://www.317hu.com/insist insist.xsd"
+       		http://www.317hu.com/mi mi.xsd"
 	   default-autowire="byName">
 
-<!--<insist:consumer id="s1" interface="com.bozhong.insist.consumer.MiSpringConsumerBean" version="1.0" group="external" />-->
+<!--<mi:consumer id="s1" interface="com.bozhong.mi.consumer.MiSpringConsumerBean" version="1.0" group="external" />-->
 
 	<bean id="providerExternalService" class="org.ahstu.mi.schema.ProviderExternalService"/>
 
-	<insist:consumer id="consumerExternalService" interface="org.ahstu.mi.schema.TestInterface" version="1.0" group="external" />
+	<mi:consumer id="consumerExternalService" interface="org.ahstu.mi.schema.TestInterface" version="1.0" group="external" />
 
-	<insist:provider id="provider01" interface="org.ahstu.mi.schema.TestInterface" version="2.0" group="group1" ref="providerExternalService" />
+	<mi:provider id="provider01" interface="org.ahstu.mi.schema.TestInterface" version="2.0" group="group1" ref="providerExternalService" />
 
 </beans>

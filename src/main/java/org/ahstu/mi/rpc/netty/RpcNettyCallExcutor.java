@@ -37,67 +37,67 @@ public class RpcNettyCallExcutor implements RpcCallExcutor {
 
 
     @Override
-    public MiResult remoteCall(MiSendDTO insistSendDTO) {
+    public MiResult remoteCall(MiSendDTO miSendDTO) {
 
-        recordLog(insistSendDTO,null,null);
+        recordLog(miSendDTO,null,null);
 
         try {
             try {
                 final NettyClient nettyClient = NettyClient.getInstance();
-                MiLock insistLock = new MiLock(insistSendDTO.getRequestId());
-                MiLockStore.add(insistLock);
-                synchronized (insistLock) {
-                    nettyClient.send(insistSendDTO);
-                    insistLock.lock(insistSendDTO.getClientTimeout());
+                MiLock miLock = new MiLock(miSendDTO.getRequestId());
+                MiLockStore.add(miLock);
+                synchronized (miLock) {
+                    nettyClient.send(miSendDTO);
+                    miLock.lock(miSendDTO.getClientTimeout());
                 }
             } catch (Throwable e) {
-                recordLog(insistSendDTO,null,e);
+                recordLog(miSendDTO,null,e);
                 throw new MiException(e.getMessage(),e);
             } finally {
-                MiLockStore.del(insistSendDTO.getRequestId());
+                MiLockStore.del(miSendDTO.getRequestId());
             }
-            MiResult insistResult = MiResultStore.getAndRemove(insistSendDTO.getRequestId());
-            if (insistResult == null) {
-                recordLog(insistSendDTO, MiError.MI_RESULT_IS_NULL,null);
+            MiResult miResult = MiResultStore.getAndRemove(miSendDTO.getRequestId());
+            if (miResult == null) {
+                recordLog(miSendDTO, MiError.MI_RESULT_IS_NULL,null);
                 throw new MiException(MiError.CLIENT_TIME_OUT);
             }
-            return insistResult;
+            return miResult;
         }  finally {
-            MiResultStore.remove(insistSendDTO.getRequestId());
+            MiResultStore.remove(miSendDTO.getRequestId());
         }
     }
 
 
-    private void recordLog(MiSendDTO insistSendDTO, MiError insistError, Throwable e){
-        if(e==null || insistError==null) {
+    private void recordLog(MiSendDTO miSendDTO, MiError miError, Throwable e){
+        if(e==null || miError==null) {
             MiLogger.record(StringUtil.format("RpcNettyCallExcutor.remoteCall excute  ! requestId:%s,serviceName:%s,group:%s,version:%s,methodName:%s,ip:%s,port:%s",
-                    insistSendDTO.getRequestId(),
-                    insistSendDTO.getInterfaceName(),
-                    insistSendDTO.getGroup(),
-                    insistSendDTO.getVersion(),
-                    insistSendDTO.getMethod(),
-                    insistSendDTO.getServerIp(),
-                    insistSendDTO.getPort()));
+                    miSendDTO.getRequestId(),
+                    miSendDTO.getInterfaceName(),
+                    miSendDTO.getGroup(),
+                    miSendDTO.getVersion(),
+                    miSendDTO.getMethod(),
+                    miSendDTO.getServerIp(),
+                    miSendDTO.getPort()));
         }
-        else if(e==null || insistError!=null){
+        else if(e==null || miError!=null){
             MiLogger.record(StringUtil.format("RpcNettyCallExcutor.remoteCall excute error ! requestId:%s,serviceName:%s,group:%s,version:%s,methodName:%s,ip:%s,port:%s,errorCode:%s",
-                    insistSendDTO.getRequestId(),
-                    insistSendDTO.getInterfaceName(),
-                    insistSendDTO.getGroup(),
-                    insistSendDTO.getVersion(),
-                    insistSendDTO.getMethod(),
-                    insistSendDTO.getServerIp(),
-                    insistSendDTO.getPort(),
-                    insistError.getErrorCode()));
+                    miSendDTO.getRequestId(),
+                    miSendDTO.getInterfaceName(),
+                    miSendDTO.getGroup(),
+                    miSendDTO.getVersion(),
+                    miSendDTO.getMethod(),
+                    miSendDTO.getServerIp(),
+                    miSendDTO.getPort(),
+                    miError.getErrorCode()));
         }else{
             MiLogger.record(StringUtil.format("RpcNettyCallExcutor.remoteCall excute error ! requestId:%s,serviceName:%s,group:%s,version:%s,methodName:%s,ip:%s,port:%s,errorCode:%s",
-                    insistSendDTO.getRequestId(),
-                    insistSendDTO.getInterfaceName(),
-                    insistSendDTO.getGroup(),
-                    insistSendDTO.getVersion(),
-                    insistSendDTO.getMethod(),
-                    insistSendDTO.getServerIp(),
-                    insistSendDTO.getPort(),
+                    miSendDTO.getRequestId(),
+                    miSendDTO.getInterfaceName(),
+                    miSendDTO.getGroup(),
+                    miSendDTO.getVersion(),
+                    miSendDTO.getMethod(),
+                    miSendDTO.getServerIp(),
+                    miSendDTO.getPort(),
                     e.getMessage()),e);
         }
     }

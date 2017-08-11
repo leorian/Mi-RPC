@@ -16,17 +16,17 @@ public class MiProviderStore {
 
 
 
-    public static void add(MiProviderMeta insistProviderMeta){
+    public static void add(MiProviderMeta miProviderMeta){
         String serviceNameGroupVersion= MiUtil.serviceGroupVersionCreateKey(
-                insistProviderMeta.getInterfaceName(),
-                insistProviderMeta.getGroup(),
-                insistProviderMeta.getVersion());
+                miProviderMeta.getInterfaceName(),
+                miProviderMeta.getGroup(),
+                miProviderMeta.getVersion());
 
-        add(serviceNameGroupVersion,insistProviderMeta);
+        add(serviceNameGroupVersion,miProviderMeta);
     }
 
-    public static void add(String serviceNameGroupVersion,MiProviderMeta insistProviderMeta){
-        providerMetaMap.put(serviceNameGroupVersion,insistProviderMeta);
+    public static void add(String serviceNameGroupVersion,MiProviderMeta miProviderMeta){
+        providerMetaMap.put(serviceNameGroupVersion,miProviderMeta);
     }
 
     public static MiProviderMeta get(String serviceNameGroupVersion){

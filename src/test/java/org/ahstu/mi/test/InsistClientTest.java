@@ -27,16 +27,16 @@ public class InsistClientTest {
     public static void main(String[] args) throws Throwable {
         init();
 
-        MiDynamicCallService insistDynamicCallService = getBean("insistDynamicCallServiceClient");
-        MiDynamicDTO insistDynamicDTO = new MiDynamicDTO();
-        insistDynamicDTO.setGroup("trade");
-        // insistDynamicDTO.setMethod("findTrade");
-        insistDynamicDTO.setMethod("findListString");
-        insistDynamicDTO.setVersion("1.0.0.daily");
-        insistDynamicDTO.setServiceName("com.bozhong.insist.test.service.TradeService");
-        //insistDynamicDTO.setParam("[\"helloworld\",[{\"id\":1,\"name\":\"xzgui01\",\"xzgSex\":\"FEMALE\"},{\"id\":2,\"name\":\"xzgui02\",\"xzgSex\":\"MALE\"}]]");
-        insistDynamicDTO.setParam("[[\"hello\",\"wolrd\",\"thankyou\"]]");
-        insistDynamicCallService.dynamicCallMethod(insistDynamicDTO);
+        MiDynamicCallService miDynamicCallService = getBean("miDynamicCallServiceClient");
+        MiDynamicDTO miDynamicDTO = new MiDynamicDTO();
+        miDynamicDTO.setGroup("trade");
+        // miDynamicDTO.setMethod("findTrade");
+        miDynamicDTO.setMethod("findListString");
+        miDynamicDTO.setVersion("1.0.0.daily");
+        miDynamicDTO.setServiceName("com.bozhong.mi.test.service.TradeService");
+        //miDynamicDTO.setParam("[\"helloworld\",[{\"id\":1,\"name\":\"xzgui01\",\"xzgSex\":\"FEMALE\"},{\"id\":2,\"name\":\"xzgui02\",\"xzgSex\":\"MALE\"}]]");
+        miDynamicDTO.setParam("[[\"hello\",\"wolrd\",\"thankyou\"]]");
+        miDynamicCallService.dynamicCallMethod(miDynamicDTO);
         System.in.read();
         for (int i = 0; i < 1000; i++) {
             Thread thread = new Thread(new Runnable() {

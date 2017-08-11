@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="http://www.317hu.com/insist"
-           xmlns="http://www.317hu.com/insist"
+           targetNamespace="http://www.317hu.com/mi"
+           xmlns="http://www.317hu.com/mi"
            xmlns:tool="http://www.springframework.org/schema/tool"
            elementFormDefault="qualified">
     <xs:import namespace="http://www.springframework.org/schema/tool"/>

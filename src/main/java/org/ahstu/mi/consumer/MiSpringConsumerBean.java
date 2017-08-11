@@ -99,7 +99,7 @@ public class MiSpringConsumerBean implements FactoryBean,ApplicationContextAware
     }
 
     public void afterPropertiesSet() throws Exception {
-        MiUtil.insistStartUp();
+        MiUtil.miStartUp();
         init();
         InsistPullProvider.pull(this.meta);
         InsistPushConsumer.push(this.meta);

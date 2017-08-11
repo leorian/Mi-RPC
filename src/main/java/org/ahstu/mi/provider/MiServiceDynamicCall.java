@@ -17,7 +17,7 @@ public class MiServiceDynamicCall {
     public static MiResult call(MiSendDTO sendDTO) {
         ThreadServerLocalUtil.set(MiConstants.REMOTE_CLIENT_IP, sendDTO.getClientIp());
         ThreadServerLocalUtil.set(MiConstants.REQUEST_ID, sendDTO.getRequestId());
-        MiResult insistResult = new MiResult();
+        MiResult miResult = new MiResult();
         MiProviderMeta providerMeta =
                 MiProviderStore.get(MiUtil.serviceGroupVersionCreateKey(sendDTO.getInterfaceName(), sendDTO.getGroup(), sendDTO.getVersion()));
         if (sendDTO.getInterfaceName().equals(MiDynamicCallService.class.getName())) {
@@ -26,10 +26,10 @@ public class MiServiceDynamicCall {
         }
 
         if (providerMeta == null) {
-            insistResult.setErrorCode(MiError.NOT_FIND_SERVICE_PROVIDER.getErrorCode());
-            insistResult.setSuccess(false);
+            miResult.setErrorCode(MiError.NOT_FIND_SERVICE_PROVIDER.getErrorCode());
+            miResult.setSuccess(false);
             recordLog(sendDTO, null, MiError.NOT_FIND_SERVICE_PROVIDER.getErrorCode());
-            return insistResult;
+            return miResult;
         }
 
         try {
@@ -38,27 +38,27 @@ public class MiServiceDynamicCall {
                     sendDTO.getArgs(),
                     sendDTO.getArgsType());
 
-            insistResult.setModule(target);
-            insistResult.setSuccess(true);
+            miResult.setModule(target);
+            miResult.setSuccess(true);
 
         } catch (NoSuchMethodException nsme) {
-            insistResult.setSuccess(false);
-            insistResult.setErrorCode(MiError.NOT_FIND_METHOD_EXCEPTION.getErrorCode());
+            miResult.setSuccess(false);
+            miResult.setErrorCode(MiError.NOT_FIND_METHOD_EXCEPTION.getErrorCode());
             recordLog(sendDTO, nsme, MiError.NOT_FIND_METHOD_EXCEPTION.getErrorCode());
         } catch (IllegalAccessException iae) {
-            insistResult.setSuccess(false);
-            insistResult.setErrorCode(MiError.ILLEGAL_ACCESS_EXCEPTION.getErrorCode());
+            miResult.setSuccess(false);
+            miResult.setErrorCode(MiError.ILLEGAL_ACCESS_EXCEPTION.getErrorCode());
             recordLog(sendDTO, iae, MiError.NOT_FIND_METHOD_EXCEPTION.getErrorCode());
         } catch (InvocationTargetException ite) {
-            insistResult.setSuccess(false);
-            insistResult.setErrorCode(MiError.INVOCATION_TARGET_EXCEPTION.getErrorCode());
+            miResult.setSuccess(false);
+            miResult.setErrorCode(MiError.INVOCATION_TARGET_EXCEPTION.getErrorCode());
             recordLog(sendDTO, ite, MiError.INVOCATION_TARGET_EXCEPTION.getErrorCode());
         } catch (Throwable e) {
-            insistResult.setSuccess(false);
-            insistResult.setErrorCode(e.getMessage());
+            miResult.setSuccess(false);
+            miResult.setErrorCode(e.getMessage());
             recordLog(sendDTO, e, e.getMessage());
         }
-        return insistResult;
+        return miResult;
     }
 
     private static void recordLog(MiSendDTO sendDTO, Throwable e, String errorCode) {

@@ -11,23 +11,23 @@ import org.apache.commons.httpclient.params.HttpClientParams;
  * Created by xiezg@317hu.com on 2017/5/24 0024.
  */
 public class HttpUtil {
-    public static final String MI_URL = "insist.317hu.com:8888";
+    public static final String MI_URL = "mi.317hu.com:8888";
 
     public static String loadZkHosts() {
         String zkHosts = null;
         HttpClient httpClient = new HttpClient(new HttpClientParams(), new SimpleHttpConnectionManager(true));
-        PostMethod postMethod = new PostMethod("http://" + MI_URL + "/imanager/insist/zkHosts");
+        PostMethod postMethod = new PostMethod("http://" + MI_URL + "/imanager/mi/zkHosts");
         try {
             httpClient.executeMethod(postMethod);
             zkHosts = postMethod.getResponseBodyAsString();
         } catch (Throwable e) {
-            zkHosts = System.getProperty("insist.zkHosts");
+            zkHosts = System.getProperty("mi.zkHosts");
         } finally {
             postMethod.releaseConnection();
         }
 
         if (StringUtil.isBlank(zkHosts)) {
-            zkHosts = System.getProperty("insist.zkHosts");
+            zkHosts = System.getProperty("mi.zkHosts");
         }
 
         return zkHosts;

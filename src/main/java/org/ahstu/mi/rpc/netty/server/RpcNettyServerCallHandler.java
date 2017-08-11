@@ -27,12 +27,12 @@ public class RpcNettyServerCallHandler extends MiChannelHandlerAdapter {
 
                 MiLogger.record("server receive message requestId:" + sendDTO.getRequestId());
                 long start = System.currentTimeMillis();
-                MiResult insistResult = MiServiceDynamicCall.call(sendDTO);
-                insistResult.setRequestId(sendDTO.getRequestId());
+                MiResult miResult = MiServiceDynamicCall.call(sendDTO);
+                miResult.setRequestId(sendDTO.getRequestId());
                 long end = System.currentTimeMillis();
                 MiLogger.record("server method call requestId:" + sendDTO.getRequestId()
                         + ", spend time: " + (end - start) + "ms");
-                sendMessage(insistResult, ctx);
+                sendMessage(miResult, ctx);
                 long sendEnd = System.currentTimeMillis();
                 MiLogger.record("server send result requestId:" + sendDTO.getRequestId() + ", spend time: "
                         + (sendEnd - end) + "ms, " + (sendEnd - start) + "ms");
@@ -44,8 +44,8 @@ public class RpcNettyServerCallHandler extends MiChannelHandlerAdapter {
 
     }
 
-    private void sendMessage(MiResult insistResult, ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(insistResult);
+    private void sendMessage(MiResult miResult, ChannelHandlerContext ctx) {
+        ctx.writeAndFlush(miResult);
 
     }
 

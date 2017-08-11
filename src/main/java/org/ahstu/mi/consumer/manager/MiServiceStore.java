@@ -20,8 +20,8 @@ public class MiServiceStore {
     // manager all ipAndPort service
     private static Map<String, List<ServiceMeta>> ipAndPortServiceMetaStore = new Hashtable<String, List<ServiceMeta>>();
 
-    public static void add(InsistServiceList insistServiceList) {
-        serviceStore.put(insistServiceList.getServiceNameGroupVersion(), insistServiceList);
+    public static void add(InsistServiceList miServiceList) {
+        serviceStore.put(miServiceList.getServiceNameGroupVersion(), miServiceList);
     }
 
     public static void addByIpAndPort(ServiceMeta serviceMeta) {
@@ -64,9 +64,9 @@ public class MiServiceStore {
     public static void delOneServiceByServiceMeta(ServiceMeta serviceMeta) {
         String serviceNameGroupVersion = MiUtil.serviceGroupVersionCreateKey(serviceMeta.getInterfaceName(),
                 serviceMeta.getGroup(), serviceMeta.getVersion());
-        InsistServiceList insistServiceList = serviceStore.get(serviceNameGroupVersion);
+        InsistServiceList miServiceList = serviceStore.get(serviceNameGroupVersion);
 
-        insistServiceList.delService(MiUtil.ipAndPortCreateKey(serviceMeta));
+        miServiceList.delService(MiUtil.ipAndPortCreateKey(serviceMeta));
 
     }
 

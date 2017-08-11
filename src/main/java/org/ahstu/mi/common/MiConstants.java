@@ -4,7 +4,7 @@ package org.ahstu.mi.common;
  * Created by renyueliang on 17/5/16.
  */
 public class MiConstants {
-    public static final String MI_ROOT_PATH = "insist";
+    public static final String MI_ROOT_PATH = "mi";
     //
     public final static String LOWER_HORIZONTAL_LINE="_";
 

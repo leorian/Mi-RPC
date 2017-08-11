@@ -104,12 +104,12 @@ public class InsistPullProvider  {
                 }
             }
 
-            InsistServiceList insistServiceList =new InsistServiceList(serviceMetas, MiUtil.serviceGroupVersionCreateKey(
+            InsistServiceList miServiceList =new InsistServiceList(serviceMetas, MiUtil.serviceGroupVersionCreateKey(
                     serviceName,
                     group,
                     version));
 
-            MiServiceStore.add(insistServiceList);
+            MiServiceStore.add(miServiceList);
 
             MiLogger.record(StringUtil.format("************* InsistPullProvider.pull success ! path:%s ****************",path));
 

@@ -78,10 +78,10 @@ public class MiSpringProviderBean implements InitializingBean, ApplicationListen
     }
 
     public void afterPropertiesSet() throws Exception {
-        MiUtil.insistStartUp();
+        MiUtil.miStartUp();
 
-        MiProviderMeta insistProviderMeta = ProviderFactory.springProviderToProviderMeta(this);
-        MiProviderStore.add(insistProviderMeta);
+        MiProviderMeta miProviderMeta = ProviderFactory.springProviderToProviderMeta(this);
+        MiProviderStore.add(miProviderMeta);
 
         this.serviceMeta = ProviderFactory.springProviderToServiceMeta(this);
     }

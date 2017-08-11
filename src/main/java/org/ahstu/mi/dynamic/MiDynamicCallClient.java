@@ -15,7 +15,7 @@ import java.lang.reflect.Method;
  */
 public class MiDynamicCallClient {
     private final MiConsumerMeta meta;
-    private final MiDynamicDTO insistDynamicDTO;
+    private final MiDynamicDTO miDynamicDTO;
 
     public MiDynamicCallClient(String serviceName, String group, String version, String methodName, String param) {
         this.meta = new MiConsumerMeta();
@@ -23,12 +23,12 @@ public class MiDynamicCallClient {
         this.meta.setGroup(group);
         this.meta.setVersion(version);
         InsistPullProvider.pull(this.meta);
-        this.insistDynamicDTO = new MiDynamicDTO();
-        this.insistDynamicDTO.setServiceName(serviceName);
-        this.insistDynamicDTO.setGroup(group);
-        this.insistDynamicDTO.setVersion(version);
-        this.insistDynamicDTO.setMethod(methodName);
-        this.insistDynamicDTO.setParam(param);
+        this.miDynamicDTO = new MiDynamicDTO();
+        this.miDynamicDTO.setServiceName(serviceName);
+        this.miDynamicDTO.setGroup(group);
+        this.miDynamicDTO.setVersion(version);
+        this.miDynamicDTO.setMethod(methodName);
+        this.miDynamicDTO.setParam(param);
     }
 
     public MiResult fetchServiceMethods() {
@@ -56,7 +56,7 @@ public class MiDynamicCallClient {
 
                 sendDTO = createInsistSendDTO(requestId,
                         MiDynamicCallService.class.getMethod(methodName, MiDynamicDTO.class),
-                        new Object[]{this.insistDynamicDTO}, serviceMeta.getIp(), serviceMeta.getPort());
+                        new Object[]{this.miDynamicDTO}, serviceMeta.getIp(), serviceMeta.getPort());
                 result = RemoteExcutorFactory.getRpcExcutor().remoteCall(sendDTO);
                 callSuccess = true;
             } catch (MiException ie) {
